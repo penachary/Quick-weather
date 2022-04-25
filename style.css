@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.nav_container{
+    position: relative;
+}
+.search-form{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translatey(-50%);
+    width: 21%;
+}
+.search-input{
+    text-align: center;
+}
+.btn-search{
+    margin-left: 0.5rem;
+    font-size: small;
+    padding: 0.25rem;
+    border-color: rgb(199, 197, 197);
+}
