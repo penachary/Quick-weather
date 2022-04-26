@@ -3,8 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
-  background-color: #D5D5E4
+body {
+  background-color: #d5d5e4;
 }
 .nav_container {
   position: relative;
@@ -40,32 +40,41 @@ body{
   border-radius: 15%;
   cursor: pointer;
 }
-#celcius{
+#celcius {
   padding: 0.33rem;
 }
 .switch-degree-btn {
   background-color: #6c757d;
   color: white;
 }
-.change_container{
+.change_container {
   display: flex;
   width: 100%;
   height: 2.3rem;
-  background-color: #d8d8d8
+  background-color: #d8d8d8;
 }
-.content_container{
+.content_container {
   display: flex;
   margin-left: 10%;
   margin-right: 10%;
   height: auto;
 }
-.content-box{
+.content-box {
   background-color: aqua;
   height: 50rem;
   width: 50%;
   border: 2px solid black;
 }
-.content-degree{
+.content-degree {
   font-size: 5rem;
 }
-.list
+.list-group-daily {
+  margin: 1rem;
+  list-style: none;
+}
+.list-daily {
+  border: 1px solid black;
+  border-right: none;
+  border-left: none;
+  padding: 0.5rem;
+}
