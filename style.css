@@ -55,18 +55,51 @@ body {
 }
 .content_container {
   display: flex;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
   height: auto;
+}
+.contact-container {
+background-color: aquamarine;
+height: auto;
+width: 17%;
+margin: 0.5rem;
+border: 1px solid black;
 }
 .content-box {
   background-color: aqua;
   height: 50rem;
-  width: 50%;
+  width: 37%;
   border: 2px solid black;
+  margin: 0.5rem;
 }
-.content-degree {
-  font-size: 5rem;
+.main-adress {
+  display: inline-block;
+  width: 100%;
+  margin: 1rem;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+.main-icon {
+  display: inline-block;
+  width: 7rem;
+  margin-left: 5rem;
+  margin-top: 2rem;
+}
+.main-degree {
+  display: inline-block;
+  font-size: 6rem;
+  margin-left: 1rem;
+  width: 40%;
+}
+.main-wheather-detail{
+display: block;
+margin: 0.5rem;
+margin-left: 1.5rem;
+font-size: 1.5rem;
+}
+.main-daynight{
+  display: block;
+  margin-left: 1rem;
 }
 .list-group-daily {
   margin: 1rem;
@@ -76,5 +109,6 @@ body {
   border: 1px solid black;
   border-right: none;
   border-left: none;
+  border-top: none;
   padding: 0.5rem;
 }
