@@ -17,8 +17,11 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css" />
-    <script defer type="module" src="script.js"></script>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/content_container.css" />
+    <link rel="stylesheet" href="./CSS/contact_container.css" />
+    <link rel="stylesheet" href="./CSS/header_container.css">
+    <script defer type="module" src="./JS/script.js"></script>
   </head>
   <body>
     <header class="header_container">
@@ -43,17 +46,25 @@
           </div>
         </div>
       </nav>
+      <div class="change_container">
+      </div>
     </header>
-    <section class="change_container">
-    </section>
     <section class="content_container">
       <div class="content-box ">
         <h2 class="main-adress">Country, City hh:mm</h2>
         <div class="content-main-box">
-          <span class="main-degree">25&#176;</span>
-          <img class="main-icon" src="./icons/brightness-high.svg" alt="Sunny">
-          <p class="main-wheather-detail">Sunny</p>
-          <span class="main-daynight" >Day 20&#176; - Night 12&#176;</span>
+          <div class="main-degree-box">
+            <span class="main-degree">25&#176;</span>
+          </div>
+          <div class="main-icon-box">
+            <img class="main-icon" src="./icons/brightness-high.svg" alt="Sunny">
+          </div>
+          <div class="main-wheather-detail-box"> 
+            <p class="main-wheather-detail">Sunny</p>
+          </div>
+          <div class="main-daynight-box">
+            <span class="main-daynight" >Day 20&#176; - Night 12&#176;</span>
+          </div>
         </div>
       </div>
       <div class="content-box">

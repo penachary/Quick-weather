@@ -1,0 +1,71 @@
+.content_container {
+  display: flex;
+  margin-left: 5%;
+  height: auto;
+}
+.content-box {
+  background-color: aqua;
+  height: 50rem;
+  width: 37%;
+  border: 2px solid black;
+  margin: 0.5rem;
+}
+/* First box */
+.main-adress {
+  display: inline-block;
+  width: 100%;
+  margin: 1rem;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+.content-main-box {
+position: relative;
+
+}
+.main-icon-box{
+  position: absolute;
+  top: 1rem;
+  right: 4rem;
+}
+.main-icon {
+  width: 7rem;
+}
+.main-degree-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.main-degree {
+  font-size: 6rem;
+  margin-left: 1rem;
+}
+.main-wheather-detail-box{
+  position: absolute;
+  top: 8rem;
+}
+.main-wheather-detail{
+margin: 0.5rem;
+margin-left: 1.5rem;
+font-size: 1.5rem;
+}
+.main-daynight-box{
+  position: absolute;
+  top: 12rem;
+}
+.main-daynight{
+  margin-left: 1.5rem;
+  font-size: 1.5rem;
+}
+/* Second box */
+.list-group-daily {
+  margin: 1rem;
+  list-style: none;
+}
+.list-daily {
+  border: 1px solid black;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  padding: 0.5rem;
+}
+
