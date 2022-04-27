@@ -24,7 +24,22 @@ const countrucode = async function () {
     console.log(err);
   }
 };
-// countrucode();
+countrucode();
+const countrucode1 = async function () {
+  try {
+    // const res = await fetch("http://dataservice.accuweather.com/locations/v1/cities/search?apikey=RWxfwMiPTuHmmMweiMxhzcgk8iMusjj2&q=istanbul&language=en&details=true");
+    const res = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,pressure_msl,weathercode,cloudcover,windspeed_10m,winddirection_10m,windgusts_10m,soil_temperature_6cm,soil_moisture_3_9cm"
+    );
+    // const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=41.02&longitude=28.96&hourly=temperature_2m,relativehumidity_2m,dewpoint_2m,apparent_temperature,pressure_msl,precipitation,weathercode,shortwave_radiation,direct_radiation,diffuse_radiation,direct_normal_irradiance,evapotranspiration,vapor_pressure_deficit,windspeed_10m,winddirection_10m,windgusts_10m");
+    if (!res.ok) throw new Error("problem");
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+countrucode1();
 const wheather = async function () {
   try {
     const res = await fetch(
