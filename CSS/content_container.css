@@ -30,7 +30,7 @@ position: relative;
   right: 4rem;
 }
 .main-icon {
-  width: 7rem;
+  width: 8rem;
 }
 .main-degree-box {
   position: absolute;
@@ -102,9 +102,10 @@ font-family: 'Sora', sans-serif;
 }
 .sunrise-icons{
   margin: 1rem 2rem 0.5rem 2rem;
+  width: 3rem;
 }
 .sunrise-time{
-  margin: 1rem 1.8rem 0.5rem 1.8rem;
+  margin: 1rem 2rem 0.5rem 2.45rem;
   font-family: 'Sora', sans-serif;
 }
 
