@@ -50,9 +50,40 @@
     background-color: #6c757d;
     color: white;
   }
+    /* change_container */
   .change_container {
-    display: flex;
+    position: relative;
     width: 100%;
     height: 2.3rem;
     background-color: #D6E6F2;
+  }
+  .current-location {
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+  }
+  .change-buttons-box {
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    transform: translateX(50%);
+    }
+  .change-buttons {
+    display: flex;
+  }
+  .bar{
+    width: 100px;
+    height: 10px;
+    border: 2px solid #fff;
+    margin: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  .bar:hover {
+    background-color: #fff;
+  }
+  input[name="r"]{
+    position: absolute;
+    visibility: hidden;
   }
