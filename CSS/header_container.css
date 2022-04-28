@@ -3,12 +3,13 @@
     background-color: #F7FBFC;
   }
   .quick-wheather {
-    font-family: 'Changa', sans-serif;
-    font-weight: 500;
+    font-family: 'Pacifico', cursive;
+    font-weight:700;
     color: black;
   }
   .quick-wheather:hover {
     color: black;
+    font-family: 'Pacifico', cursive;
   }
   .search-form {
     position: absolute;
