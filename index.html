@@ -17,6 +17,9 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500; 600;700&family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/content_container.css" />
     <link rel="stylesheet" href="./CSS/contact_container.css" />
@@ -26,9 +29,9 @@
   <body>
     <header class="header_container">
       <!-- Navbar -->
-      <nav class="navbar navbar-light bg-light nav_container">
+      <nav class="navbar  nav_container">
         <div class="container-fluid">
-          <a class="navbar-brand">Quick<br />Wheather</a>
+          <a class="navbar-brand quick-wheather" href="index.html">Quick<br />Wheather</a>
           <form class="d-flex search-form">
             <input
               class="form-control search-input"
@@ -70,30 +73,28 @@
       <div class="content-box">
         <div class="fells-sun-icons-container">
           <div class="feels-box">
-            <p>Feels 12&#176;</p>
+            <p>Feels  <br> 12&#176;</p>
           </div>
           <div class="sunrise-set-box">
             <div class="sunrise-box">
-              <img src="./icons/sunrise.svg" alt="sunrise" class="sunrise-set">
-              <img src="./icons/sunset.svg" alt="sunset" class="sunrise-set">
+              <img src="./icons/sunrise.svg" alt="sunrise" class="sunrise-set sunrise-icons">
+              <img src="./icons/sunset.svg" alt="sunset" class="sunrise-set sunrise-icons">
             </div>
             <div class="sunrise-box">
-              <span class="sunrise-set"> 06:11</span> 
-              <span class="sunrise-set"> 20:15</span>
+              <span class="sunrise-set sunrise-time"> 06:11</span> 
+              <span class="sunrise-set sunrise-time"> 20:15</span>
             </div>
           </div>
         </div>
         <ul class="list-group-daily daily-group1">
-          <li class="list-daily">windgust 10km/h</li>
-          <li class="list-daily">windspeed  12km/h</li>
-          <li class="list-daily">wind direction  10 </li>
-          <li class="list-daily">shortwave</li>
+          <li class="list-daily">Pressure 20hPa</li>
+          <li class="list-daily">Humidity 60%</li>
+          <li class="list-daily">Cloud cover 60% </li>
         </ul>
         <ul class="list-group-daily daily-group2">
-          <li class="list-daily">windgust 10km/h</li>
-          <li class="list-daily">windspeed  12km/h</li>
-          <li class="list-daily">wind direction  10 </li>
-          <li class="list-daily">shortwave</li>
+          <li class="list-daily">Windgust 10km/h</li>
+          <li class="list-daily">Windspeed  12km/h</li>
+          <li class="list-daily">Wind direction  10d </li>
         </ul>
       </div>
       <div class="contact-container">
@@ -103,3 +104,5 @@
     <footer class="footer_container"></footer>
   </body>
 </html>
+<!-- font-family: 'Changa', sans-serif;
+font-family: 'Sora', sans-serif; -->

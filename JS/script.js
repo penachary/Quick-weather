@@ -14,7 +14,7 @@ const countrucode = async function () {
   try {
     // const res = await fetch("http://dataservice.accuweather.com/locations/v1/cities/search?apikey=RWxfwMiPTuHmmMweiMxhzcgk8iMusjj2&q=istanbul&language=en&details=true");
     const res = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=41.02&longitude=28.96&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,precipitation_hours,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant,shortwave_radiation_sum&timezone=Europe%2FBerlin"
+      "https://api.open-meteo.com/v1/forecast?latitude=41.01384&longitude=28.94966&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,precipitation_sum,precipitation_hours,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant,shortwave_radiation_sum&timezone=Europe%2FIstanbul"
     );
     // const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=41.02&longitude=28.96&hourly=temperature_2m,relativehumidity_2m,dewpoint_2m,apparent_temperature,pressure_msl,precipitation,weathercode,shortwave_radiation,direct_radiation,diffuse_radiation,direct_normal_irradiance,evapotranspiration,vapor_pressure_deficit,windspeed_10m,winddirection_10m,windgusts_10m");
     if (!res.ok) throw new Error("problem");
@@ -29,7 +29,7 @@ const countrucode1 = async function () {
   try {
     // const res = await fetch("http://dataservice.accuweather.com/locations/v1/cities/search?apikey=RWxfwMiPTuHmmMweiMxhzcgk8iMusjj2&q=istanbul&language=en&details=true");
     const res = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,pressure_msl,weathercode,cloudcover,windspeed_10m,winddirection_10m,windgusts_10m,soil_temperature_6cm,soil_moisture_3_9cm"
+      "https://api.open-meteo.com/v1/forecast?latitude=41.01384&longitude=28.94966&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,pressure_msl,weathercode,cloudcover,windspeed_10m,winddirection_10m,windgusts_10m,soil_temperature_6cm,soil_moisture_3_9cm"
     );
     // const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=41.02&longitude=28.96&hourly=temperature_2m,relativehumidity_2m,dewpoint_2m,apparent_temperature,pressure_msl,precipitation,weathercode,shortwave_radiation,direct_radiation,diffuse_radiation,direct_normal_irradiance,evapotranspiration,vapor_pressure_deficit,windspeed_10m,winddirection_10m,windgusts_10m");
     if (!res.ok) throw new Error("problem");
@@ -43,7 +43,7 @@ countrucode1();
 const wheather = async function () {
   try {
     const res = await fetch(
-      "http://api.positionstack.com/v1/forward?access_key=1ecc74fc50e4b04c284b0b718ca84c6d&query=moscow"
+      "http://api.positionstack.com/v1/forward?access_key=1ecc74fc50e4b04c284b0b718ca84c6d&query=istanbul"
     );
     // const res = await fetch("http://dataservice.accuweather.com/forecasts/v1/daily/5day/318251?apikey=RWxfwMiPTuHmmMweiMxhzcgk8iMusjj2&language=en&details=true&metric=true");
     if (!res.ok) throw new Error("problem");
@@ -53,5 +53,5 @@ const wheather = async function () {
     console.log(err);
   }
 };
-// wheather();
+wheather();
 // RWxfwMiPTuHmmMweiMxhzcgk8iMusjj2

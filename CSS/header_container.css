@@ -1,5 +1,14 @@
 .nav_container {
     position: relative;
+    background-color: #F7FBFC;
+  }
+  .quick-wheather {
+    font-family: 'Changa', sans-serif;
+    font-weight: 500;
+    color: black;
+  }
+  .quick-wheather:hover {
+    color: black;
   }
   .search-form {
     position: absolute;
@@ -7,6 +16,7 @@
     left: 40%;
     transform: translatey(-50%);
     width: 21%;
+    font-family: 'Changa', sans-serif;
   }
   .search-input {
     text-align: center;
@@ -43,5 +53,5 @@
     display: flex;
     width: 100%;
     height: 2.3rem;
-    background-color: #d8d8d8;
+    background-color: #D6E6F2;
   }
