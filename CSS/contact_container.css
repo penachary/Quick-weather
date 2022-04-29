@@ -1,8 +1,9 @@
 .contact-container {
-  background-color: #d6e6f2;
+  background-color: #7fb5ff;
   height: auto;
   width: 17%;
   margin: 0.5rem;
+  border: 2px solid #06113c;
   border-radius: 15%;
 }
 .social-box {

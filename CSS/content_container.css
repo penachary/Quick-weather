@@ -4,11 +4,12 @@
   height: auto;
 }
 .content-box {
-  background-color: #D6E6F2;
+  background-color: #7fb5ff;
   height: auto;
   min-height: 22rem;
   width: 37%;
   margin: 0.5rem;
+  border: 2px solid #06113c;
   border-radius: 7%;
 }
 /* First box */
@@ -18,13 +19,12 @@
   margin: 1rem;
   padding-top: 1rem;
   font-size: 1.5rem;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
 }
 .content-main-box {
-position: relative;
-
+  position: relative;
 }
-.main-icon-box{
+.main-icon-box {
   position: absolute;
   top: 1rem;
   right: 4rem;
@@ -40,26 +40,26 @@ position: relative;
 .main-degree {
   font-size: 6rem;
   margin-left: 1rem;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
 }
-.main-wheather-detail-box{
+.main-wheather-detail-box {
   position: absolute;
   top: 8rem;
 }
-.main-wheather-detail{
-margin: 0.5rem;
-margin-left: 1.5rem;
-font-size: 1.5rem;
-font-family: 'Sora', sans-serif;
+.main-wheather-detail {
+  margin: 0.5rem;
+  margin-left: 1.5rem;
+  font-size: 1.5rem;
+  font-family: "Sora", sans-serif;
 }
-.main-daynight-box{
+.main-daynight-box {
   position: absolute;
   top: 12rem;
 }
-.main-daynight{
+.main-daynight {
   margin-left: 1.5rem;
   font-size: 1.5rem;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
 }
 /* Second box */
 .list-group-daily {
@@ -68,7 +68,7 @@ font-family: 'Sora', sans-serif;
   width: 46%;
   font-size: 1.1rem;
   font-weight: 400;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
 }
 .list-daily {
   border: 1px solid black;
@@ -80,7 +80,7 @@ font-family: 'Sora', sans-serif;
 .fells-sun-icons-container {
   display: flex;
 }
-.feels-box{
+.feels-box {
   width: 30%;
   margin: 1.5rem;
   padding-top: 0.8rem;
@@ -88,10 +88,10 @@ font-family: 'Sora', sans-serif;
 .feels-box p {
   font-size: 2rem;
   text-align: center;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
 }
 .sunrise-set-box {
-  width:60%;
+  width: 60%;
   padding-left: 1rem;
   padding-top: 1.3rem;
 }
@@ -100,13 +100,11 @@ font-family: 'Sora', sans-serif;
   margin: 1rem;
   text-align: center;
 }
-.sunrise-icons{
+.sunrise-icons {
   margin: 1rem 2rem 0.5rem 2rem;
   width: 3rem;
 }
-.sunrise-time{
+.sunrise-time {
   margin: 1rem 2rem 0.5rem 2.45rem;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
 }
-
-

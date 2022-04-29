@@ -1,88 +1,89 @@
 .nav_container {
-    position: relative;
-    background-color: #F7FBFC;
-  }
-  .quick-wheather {
-    font-family: 'Pacifico', cursive;
-    font-weight:700;
-    color: black;
-  }
-  .quick-wheather:hover {
-    color: black;
-    font-family: 'Pacifico', cursive;
-  }
-  .search-form {
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translatey(-50%);
-    width: 21%;
-    font-family: 'Changa', sans-serif;
-  }
-  .search-input {
-    text-align: center;
-  }
-  .btn-search {
-    margin-left: 0.5rem;
-    font-size: small;
-    padding: 0.25rem;
-    border-color: rgb(199, 197, 197);
-  }
-  .btn-search:hover {
-    background-color: #D6E6F2;
-  }
-  .symbol-container {
-    display: flex;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 5%;
-  }
-  .degree-symbol {
-    padding: 0.4rem;
-    text-align: center;
-    margin: 0.3rem;
-    border: 0.1rem solid rgb(199, 197, 197);
-    border-radius: 15%;
-    cursor: pointer;
-  }
-  #celcius {
-    padding: 0.33rem;
-  }
-  .switch-degree-btn {
-    background-color: #D6E6F2;
-    color: black;
-  }
-    /* change_container */
-  .change_container {
-    position: relative;
-    width: 100%;
-    height: 2.3rem;
-    background-color: #D6E6F2;
-  }
-  .current-location {
-    position: absolute;
-    top: 50%;
-    left: 3%;
-    transform: translateY(-50%);
-  }
-  .change-buttons-box {
-    position: absolute;
-    right: 50%;
-    bottom: 0;
-    transform: translateX(50%);
-    }
-  .change-buttons {
-    display: flex;
-  }
-  .bar{
-    width: 100px;
-    margin: 6px;
-    text-align: center;
-    border-bottom: 4px solid #D6E6F2;
-    cursor: pointer;
-    transition: 0.4s;
-  }
-  .bar-switch {
-    border-bottom: 4px solid #fff;
-  }
+  position: relative;
+  background-color: #f7fbfc;
+}
+.quick-wheather {
+  font-family: "Pacifico", cursive;
+  font-weight: 700;
+  color: black;
+}
+.quick-wheather:hover {
+  color: black;
+  font-family: "Pacifico", cursive;
+}
+.search-form {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translatey(-50%);
+  width: 21%;
+  font-family: "Changa", sans-serif;
+}
+.search-input {
+  text-align: center;
+}
+.btn-search {
+  margin-left: 0.5rem;
+  font-size: small;
+  padding: 0.25rem;
+  border-color: rgb(199, 197, 197);
+}
+.btn-search:hover {
+  background-color: #d6e6f2;
+}
+.symbol-container {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5%;
+}
+.degree-symbol {
+  padding: 0.4rem;
+  text-align: center;
+  margin: 0.3rem;
+  border: 0.1rem solid rgb(199, 197, 197);
+  border-radius: 15%;
+  cursor: pointer;
+}
+#celcius {
+  padding: 0.33rem;
+}
+.switch-degree-btn {
+  background-color: #d6e6f2;
+  color: black;
+}
+/* change_container */
+.change_container {
+  position: relative;
+  width: 100%;
+  height: 2.3rem;
+  color: white;
+  background-color: #06113c;
+}
+.current-location {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+}
+.change-buttons-box {
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  transform: translateX(50%);
+}
+.change-buttons {
+  display: flex;
+}
+.bar {
+  width: 100px;
+  margin: 6px;
+  text-align: center;
+  border-bottom: 4px solid #d6e6f2;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.bar-switch {
+  border-bottom: 4px solid #fff;
+}
