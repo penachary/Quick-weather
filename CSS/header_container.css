@@ -1,6 +1,5 @@
 .nav_container {
   position: relative;
-  background-color: #f7fbfc;
 }
 .quick-wheather {
   font-family: "Pacifico", cursive;
@@ -26,10 +25,10 @@
   margin-left: 0.5rem;
   font-size: small;
   padding: 0.25rem;
-  border-color: rgb(199, 197, 197);
+  border-color: var(--corp-btn-border);
 }
 .btn-search:hover {
-  background-color: #d6e6f2;
+  background-color: var( --corp-btn-hover);
 }
 .symbol-container {
   display: flex;
@@ -42,7 +41,7 @@
   padding: 0.4rem;
   text-align: center;
   margin: 0.3rem;
-  border: 0.1rem solid rgb(199, 197, 197);
+  border: 0.1rem solid var(--corp-btn-border);
   border-radius: 15%;
   cursor: pointer;
 }
@@ -50,7 +49,7 @@
   padding: 0.33rem;
 }
 .switch-degree-btn {
-  background-color: #d6e6f2;
+  background-color: var(--corp-btn-hover);
   color: black;
 }
 /* change_container */
@@ -59,7 +58,7 @@
   width: 100%;
   height: 2.3rem;
   color: white;
-  background-color: #06113c;
+  background-color: var(--corp-dark-blue);
 }
 .current-location {
   position: absolute;
@@ -80,7 +79,7 @@
   width: 100px;
   margin: 6px;
   text-align: center;
-  border-bottom: 4px solid #d6e6f2;
+  border-bottom: 4px solid var(--corp-dark-blue);
   cursor: pointer;
   transition: 0.4s;
 }

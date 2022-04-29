@@ -1,9 +1,26 @@
+:root {
+  --corp-light-green: #d6e6f2;
+  --corp-grey-navi-bc: #f7fbfc;
+  --corp-btn-border: rgb(199, 197, 197);
+  --corp-btn-hover: #d6e6f2;
+  --corp-dark-blue:#06113c;
+  --corp-light-blue:#7fb5ff;
+  --corp-darker-green: rgba(0, 102, 102, 0.7);
+  --corp-dark-green: rgba(0, 204, 204, 0.7);
+  
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  background-color: #d6e6f2;
   font-family: "Changa", sans-serif;
+  background-image: linear-gradient(to bottom right,rgba(102, 204, 255, 0.2), rgba(0, 255, 255, 0.2)), url(../images/daynight.png);
+  background-size: cover;
+  background-repeat: no-repeat; 
+  height: 100vh;
+  background-position: center;
 }
+
