@@ -28,6 +28,9 @@
     padding: 0.25rem;
     border-color: rgb(199, 197, 197);
   }
+  .btn-search:hover {
+    background-color: #D6E6F2;
+  }
   .symbol-container {
     display: flex;
     position: absolute;
@@ -47,8 +50,8 @@
     padding: 0.33rem;
   }
   .switch-degree-btn {
-    background-color: #6c757d;
-    color: white;
+    background-color: #D6E6F2;
+    color: black;
   }
     /* change_container */
   .change_container {
@@ -74,16 +77,12 @@
   }
   .bar{
     width: 100px;
-    height: 10px;
-    border: 2px solid #fff;
     margin: 6px;
+    text-align: center;
+    border-bottom: 4px solid #D6E6F2;
     cursor: pointer;
     transition: 0.4s;
   }
-  .bar:hover {
-    background-color: #fff;
-  }
-  input[name="r"]{
-    position: absolute;
-    visibility: hidden;
+  .bar-switch {
+    border-bottom: 4px solid #fff;
   }
