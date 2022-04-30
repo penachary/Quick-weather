@@ -5,10 +5,10 @@
   font-family: "Pacifico", cursive;
   font-weight: 700;
   font-size: 1.3rem;
-  color: var( --corp-dark-blue);
+  color: var(--corp-dark-blue);
 }
 .quick-wheather:hover {
-  color: var( --corp-dark-blue);
+  color: var(--corp-dark-blue);
   font-family: "Pacifico", cursive;
 }
 .search-form {
@@ -29,7 +29,7 @@
   border-color: var(--corp-btn-border);
 }
 .btn-search:hover {
-  background-color: var( --corp-btn-hover);
+  background-color: var(--corp-btn-hover);
 }
 .symbol-container {
   display: flex;
@@ -65,6 +65,12 @@
   position: absolute;
   top: 50%;
   left: 3%;
+  transform: translateY(-50%);
+}
+.current-date {
+  position: absolute;
+  top: 50%;
+  left: 12%;
   transform: translateY(-50%);
 }
 .change-buttons-box {

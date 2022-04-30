@@ -6,6 +6,8 @@ const btnFahrenheit = document.getElementById("fahrenheit");
 const btnChangeBars = document.querySelectorAll(".bar");
 const firstContentContainer = document.querySelector(".first-box");
 const secondContentContainer = document.querySelector(".second-box");
+const currentLocationContainer = document.querySelector(".current-location");
+const currentDateContainer = document.querySelector(".current-date");
 
 btnDegrees.forEach((btn) =>
   btn.addEventListener("click", function () {
@@ -20,11 +22,29 @@ btnChangeBars.forEach((btn) =>
     btn.classList.add("bar-switch");
   })
 );
+const showUpdateTime = function () {
+  const markup = `
+  <span> ${module.currentDate()} </span>
+  `;
+  currentDateContainer.innerHTML = "";
+  currentDateContainer.insertAdjacentHTML("afterbegin", markup);
+};
+showUpdateTime();
+setInterval(showUpdateTime, 1000 * 60);
+
 const showWeather = async function () {
   try {
     await module.wheatherForecast();
     const dailyData = module.stateDaily;
     console.log(dailyData);
+
+    const markupCurrentDate = `
+    <span>${dailyData.country}, ${dailyData.city} </span>
+    `;
+    currentLocationContainer.insertAdjacentHTML(
+      "afterbegin",
+      markupCurrentDate
+    );
 
     const markup1 = `
     <h2 class="main-adress">${dailyData.country}, ${dailyData.city}</h2>

@@ -5,6 +5,15 @@ import {
   GEOCODE_API_BY_IP_URL,
 } from "./config.js";
 
+export const currentDate = function () {
+  const now = new Date();
+  const day = `${now.getDate()}`.padStart(2, 0);
+  const month = `${now.getMonth() + 1}`.padStart(2, 0);
+  const year = `${now.getFullYear()}`;
+  const hour = `${now.getHours()}`.padStart(2, 0);
+  const minute = `${now.getMinutes()}`.padStart(2, 0);
+  return `${day}/${month}/${year}, ${hour}:${minute}`;
+};
 export const stateDaily = {
   lng: "",
   lat: "",
@@ -80,23 +89,28 @@ export const wheatherForecast = async function () {
       getJSON(wheatherHourly),
     ]);
     //  console.log(data);
-    stateDaily.dayTemp = data[0].daily.temperature_2m_max[0];
-    stateDaily.nightTemp = data[0].daily.temperature_2m_min[0];
+    stateDaily.dayTemp = Math.round(data[0].daily.temperature_2m_max[0]);
+    stateDaily.nightTemp = Math.trunc(data[0].daily.temperature_2m_min[0]);
     stateDaily.sunrise = data[0].daily.sunrise[0].slice(11);
     stateDaily.sunset = data[0].daily.sunset[0].slice(11);
-    stateDaily.feels =
-      data[1].hourly.apparent_temperature[stateDaily.localTime];
-    stateDaily.cloudCover = data[1].hourly.cloudcover[stateDaily.localTime];
-    stateDaily.pressure = data[1].hourly.pressure_msl[stateDaily.localTime];
+    stateDaily.feels = Math.round(
+      data[1].hourly.apparent_temperature[stateDaily.localTime - 1]
+    );
+    stateDaily.cloudCover = data[1].hourly.cloudcover[stateDaily.localTime - 1];
+    stateDaily.pressure = data[1].hourly.pressure_msl[stateDaily.localTime - 1];
     stateDaily.humidity =
-      data[1].hourly.relativehumidity_2m[stateDaily.localTime];
-    stateDaily.temperature =
-      data[1].hourly.temperature_2m[stateDaily.localTime];
-    stateDaily.wheatherCode = data[1].hourly.weathercode[stateDaily.localTime];
+      data[1].hourly.relativehumidity_2m[stateDaily.localTime - 1];
+    stateDaily.temperature = Math.round(
+      data[1].hourly.temperature_2m[stateDaily.localTime - 1]
+    );
+    stateDaily.wheatherCode =
+      data[1].hourly.weathercode[stateDaily.localTime - 1];
     stateDaily.windDirection =
-      data[1].hourly.winddirection_10m[stateDaily.localTime];
-    stateDaily.windGust = data[1].hourly.windgusts_10m[stateDaily.localTime];
-    stateDaily.windSpeed = data[1].hourly.windspeed_10m[stateDaily.localTime];
+      data[1].hourly.winddirection_10m[stateDaily.localTime - 1];
+    stateDaily.windGust =
+      data[1].hourly.windgusts_10m[stateDaily.localTime - 1];
+    stateDaily.windSpeed =
+      data[1].hourly.windspeed_10m[stateDaily.localTime - 1];
     // console.log(data);
     console.log(stateDaily);
   } catch (err) {
