@@ -1,4 +1,5 @@
 import * as module from "./module.js";
+import { weatherCodes } from "./config.js";
 
 const btnDegrees = document.querySelectorAll(".degree-symbol");
 const btnCelcius = document.getElementById("celcius");
@@ -30,7 +31,7 @@ const showUpdateTime = function () {
   currentDateContainer.insertAdjacentHTML("afterbegin", markup);
 };
 showUpdateTime();
-setInterval(showUpdateTime, 1000 * 60);
+setInterval(showUpdateTime, 1000);
 
 const showWeather = async function () {
   try {
@@ -53,13 +54,19 @@ const showWeather = async function () {
         <span class="main-degree">${dailyData.temperature}&#176;</span>
       </div>
       <div class="main-icon-box">
-        <img class="main-icon" src="./icons/fog.svg" alt="Sunny">
+        <img class="main-icon" src="./icons/${
+          dailyData.weatherCode
+        }.svg" alt="icons">
       </div>
       <div class="main-wheather-detail-box"> 
-        <p class="main-wheather-detail">Sunny</p>
+        <p class="main-wheather-detail">${
+          weatherCodes[dailyData.weatherCode]
+        }</p>
       </div>
       <div class="main-daynight-box">
-        <span class="main-daynight" >Day ${dailyData.dayTemp}&#176; - Night ${dailyData.nightTemp}&#176;</span>
+        <span class="main-daynight" >Day ${dailyData.dayTemp}&#176; - Night ${
+      dailyData.nightTemp
+    }&#176;</span>
       </div>
     </div>
     `;

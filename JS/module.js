@@ -23,7 +23,7 @@ export const stateDaily = {
   localTime: "",
   timezone: "",
   temperature: "",
-  wheatherCode: "",
+  weatherCode: "",
   dayTemp: "",
   nightTemp: "",
   feels: "",
@@ -103,7 +103,7 @@ export const wheatherForecast = async function () {
     stateDaily.temperature = Math.round(
       data[1].hourly.temperature_2m[stateDaily.localTime - 1]
     );
-    stateDaily.wheatherCode =
+    stateDaily.weatherCode =
       data[1].hourly.weathercode[stateDaily.localTime - 1];
     stateDaily.windDirection =
       data[1].hourly.winddirection_10m[stateDaily.localTime - 1];
