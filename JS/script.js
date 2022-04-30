@@ -19,7 +19,6 @@ btn.addEventListener("click", function () {
 })
 );
 
-module.geocoding();
-module.wheatherForecast();
+// module.wheatherForecast();
 
 

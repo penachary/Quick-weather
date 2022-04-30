@@ -4,10 +4,11 @@
 .quick-wheather {
   font-family: "Pacifico", cursive;
   font-weight: 700;
-  color: black;
+  font-size: 1.3rem;
+  color: var( --corp-dark-blue);
 }
 .quick-wheather:hover {
-  color: black;
+  color: var( --corp-dark-blue);
   font-family: "Pacifico", cursive;
 }
 .search-form {
@@ -41,7 +42,7 @@
   padding: 0.4rem;
   text-align: center;
   margin: 0.3rem;
-  border: 0.1rem solid var(--corp-btn-border);
+  border: 0.1rem solid var(--corp-btn-hover);
   border-radius: 15%;
   cursor: pointer;
 }

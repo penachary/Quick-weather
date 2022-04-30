@@ -7,7 +7,8 @@
   --corp-light-blue:#7fb5ff;
   --corp-darker-green: rgba(0, 102, 102, 0.7);
   --corp-dark-green: rgba(0, 204, 204, 0.7);
-  
+  --corp-bg-darkgreen: rgba(102, 204, 255, 0.2);
+  --corp-bg-ligtergreen: rgba(0, 255, 255, 0.2);
 }
 
 * {
@@ -17,10 +18,9 @@
 }
 body {
   font-family: "Changa", sans-serif;
-  background-image: linear-gradient(to bottom right,rgba(102, 204, 255, 0.2), rgba(0, 255, 255, 0.2)), url(../images/bg-image.png);
+  background-image: linear-gradient(to bottom right, var(--corp-bg-darkgreen),var(--corp-bg-ligtergreen)), url(../images/bg-image.png);
   background-size: cover;
   background-repeat: no-repeat; 
   height: 100vh;
   background-position: center;
 }
-

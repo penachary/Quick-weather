@@ -7,3 +7,4 @@ export const WHEATHER_HOURLY_API_URL = function(lat, lng){
 export const GEOCODE_API_URL = function(city){
     return `http://api.positionstack.com/v1/forward?access_key=1ecc74fc50e4b04c284b0b718ca84c6d&query=${city}`
 }
+export const GEOCODE_API_BY_IP_URL = "https:api.bigdatacloud.net/data/ip-geolocation-with-confidence?ip=81.214.126.173&localityLanguage=en&key=6f9a7317cdff4289b58fbd5071997b4e";
