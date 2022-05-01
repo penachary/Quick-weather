@@ -1,5 +1,6 @@
 import * as module from "./module.js";
 import { weatherCodes } from "./config.js";
+import { markupEcma } from "./view.js";
 
 const btnDegrees = document.querySelectorAll(".degree-symbol");
 const btnCelcius = document.getElementById("celcius");
@@ -10,6 +11,7 @@ const secondContentContainer = document.querySelector(".second-box");
 const currentLocationContainer = document.querySelector(".current-location");
 const currentDateContainer = document.querySelector(".current-date");
 
+console.log(markupEcma);
 btnDegrees.forEach((btn) =>
   btn.addEventListener("click", function () {
     if (btn.classList.contains("switch-degree-btn")) return;
@@ -37,7 +39,6 @@ const showWeather = async function () {
   try {
     await module.wheatherForecast();
     const dailyData = module.stateDaily;
-    console.log(dailyData);
 
     const markupCurrentDate = `
     <span>${dailyData.country}, ${dailyData.city} </span>
@@ -106,3 +107,13 @@ const showWeather = async function () {
   }
 };
 showWeather();
+
+// funtion for spliting array into smaller pieces
+Object.defineProperty(Array.prototype, "chunk", {
+  value: function (chunkSize) {
+    let R = [];
+    for (let i = 0; i < this.length; i += chunkSize)
+      R.push(this.slice(i, i + chunkSize));
+    return R;
+  },
+});

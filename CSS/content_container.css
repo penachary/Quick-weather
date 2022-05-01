@@ -4,7 +4,11 @@
   padding-left: 12%;
 }
 .content-box {
-  background-image: linear-gradient(to top left,var(--corp-darker-green), var(--corp-dark-green)); 
+  background-image: linear-gradient(
+    to top left,
+    var(--corp-darker-green),
+    var(--corp-dark-green)
+  );
   color: white;
   height: auto;
   min-height: 22rem;
@@ -72,7 +76,7 @@
   font-family: "Sora", sans-serif;
 }
 .list-daily {
-  background-color:rgba(0, 128, 128, 0.5);
+  background-color: rgba(0, 128, 128, 0.5);
   margin: 0.1rem;
   padding: 00.25rem;
   padding-left: 00.25rem;
@@ -112,4 +116,7 @@
 .sunrise-time {
   margin: 1rem 2rem 0.5rem 2.45rem;
   font-family: "Sora", sans-serif;
+}
+.hidden {
+  display: none;
 }
