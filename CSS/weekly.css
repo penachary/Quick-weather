@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   width: 60%;
   border-radius: 0;
-  min-height: 15rem;
+  min-height: 10rem;
   height: auto;
 }
 .weekly-adress {
@@ -20,7 +20,7 @@
 .weekly-box {
   display: flex;
   background-color: bisque;
-  height: 5rem;
+  height: 7rem;
   width: 100%;
   margin: 0.5rem;
 }
@@ -30,6 +30,12 @@
   margin: 1rem;
 }
 .weekly-icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: blueviolet;
   width: 30%;
+}
+.weekly-icon-box img {
+  width: 8rem;
 }
