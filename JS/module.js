@@ -37,6 +37,23 @@ export const stateDaily = {
   windDirection: "",
 };
 
+export const stateWeekly ={
+  country: "",
+  city: "",
+  date: "",
+  weatherCode: "",
+  dayTemp: "",
+  nightTemp: "",
+  dayTempFeel: "",
+  nightTempFeel: "",
+  rainyHours: "",
+  solarRadiation: "",
+  cloudCover: "",
+  windGust: "",
+  windSpeed: "",
+  windDirection: "",
+}
+
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -65,7 +82,7 @@ const getJSON = function (url, errorMsg = "Something went wrong!!!") {
 export const wheatherForecast = async function () {
   try {
     const dataIP = await geocodingAPIbyIP();
-    // console.log(dataIP);
+    // daily data
     stateDaily.country = dataIP.country.isoName;
     stateDaily.city = dataIP.location.city;
     stateDaily.lng = dataIP.location.longitude;
@@ -73,6 +90,9 @@ export const wheatherForecast = async function () {
     stateDaily.localTime = +dataIP.location.timeZone.localTime.slice(11, 13);
     stateDaily.timezone = dataIP.location.timeZone.ianaTimeId;
     stateDaily.continent = dataIP.location.timeZone.ianaTimeId.split("/")[0];
+    // weekly data
+    stateWeekly.country = dataIP.country.isoName;
+    stateWeekly.city = dataIP.location.city;
 
     const wheatherDaily = await WHEATHER_DAILY_API_URL(
       stateDaily.lat,
@@ -89,6 +109,7 @@ export const wheatherForecast = async function () {
       getJSON(wheatherHourly),
     ]);
     console.log(data);
+    // daily data
     stateDaily.dayTemp = Math.round(data[0].daily.temperature_2m_max[0]);
     stateDaily.nightTemp = Math.trunc(data[0].daily.temperature_2m_min[0]);
     stateDaily.sunrise = data[0].daily.sunrise[0].slice(11);
@@ -111,8 +132,20 @@ export const wheatherForecast = async function () {
       data[1].hourly.windgusts_10m[stateDaily.localTime - 1];
     stateDaily.windSpeed =
       data[1].hourly.windspeed_10m[stateDaily.localTime - 1];
-    // console.log(data);
-    console.log(stateDaily);
+  
+  // weekly data
+  stateWeekly.date = data[0].daily.time;
+  stateWeekly.weatherCode = data[0].daily.weathercode;
+  stateWeekly.dayTemp = data[0].daily.temperature_2m_min;
+  stateWeekly.nightTemp = data[0].daily.temperature_2m_max;
+  stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_min;
+  stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_max;
+  stateWeekly.rainyHours = data[0].daily.precipitation_hours;
+  stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum;
+  stateWeekly.cloudCover = data[1].hourly.cloudcover; // dahası var
+  stateWeekly.windGust = data[0].daily.windgusts_10m_max;
+  stateWeekly.windSpeed = data[0].daily.windspeed_10m_max;
+  stateWeekly.windDirection = data[0].daily.winddirection_10m_dominant;
   } catch (err) {
     console.log(err);
   }

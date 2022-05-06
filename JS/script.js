@@ -1,6 +1,5 @@
 import * as module from "./module.js";
 import { weatherCodes } from "./config.js";
-import { markupEcma } from "./view.js";
 
 const btnDegrees = document.querySelectorAll(".degree-symbol");
 const btnCelcius = document.getElementById("celcius");
@@ -10,8 +9,8 @@ const firstContentContainer = document.querySelector(".first-box");
 const secondContentContainer = document.querySelector(".second-box");
 const currentLocationContainer = document.querySelector(".current-location");
 const currentDateContainer = document.querySelector(".current-date");
+const weeklyContainer = document.querySelector(".weekly-main-box");
 
-console.log(markupEcma);
 btnDegrees.forEach((btn) =>
   btn.addEventListener("click", function () {
     if (btn.classList.contains("switch-degree-btn")) return;
