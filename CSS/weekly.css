@@ -3,8 +3,8 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 60%;
-  border-radius: 0;
+  width: 40%;
+  border-radius: 8%;
   min-height: 10rem;
   height: auto;
 }
@@ -19,23 +19,50 @@
 }
 .weekly-box {
   display: flex;
-  background-color: bisque;
+  justify-content: center;
+  align-items: center;
   height: 7rem;
   width: 100%;
   margin: 0.5rem;
 }
 .weekly-temp-box {
-  background-color: rebeccapurple;
-  width: 60%;
-  margin: 1rem;
+  width: 30%;
+  text-align: center;
+}
+.day-night-weekly{
+  font-size: 1.7rem;
+  margin: 0;
+}
+.day-night-temp-weekly{
+  font-size: 1.3rem;
+}
+.feels-temp-weekly{
+  font-size: 1.3rem;
+  margin-left: 1.7rem;
+}
+.feels-weekly{
+  display: inline-block;
+  font-size: 0.5rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 0.1rem;
 }
 .weekly-icon-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: blueviolet;
   width: 30%;
 }
 .weekly-icon-box img {
   width: 8rem;
+}
+.list-group-weekly{
+  list-style-type: none;
+  margin-right: 2rem;
+}
+.list-weekly{
+  background-color: rgba(0, 128, 128, 0.5);
+  margin: 0.1rem;
+  padding: 0.3rem;
+  
 }

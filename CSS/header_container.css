@@ -72,6 +72,7 @@
   top: 50%;
   left: 12%;
   transform: translateY(-50%);
+  margin-left: 00.4rem;
 }
 .change-buttons-box {
   position: absolute;

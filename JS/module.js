@@ -12,7 +12,7 @@ export const currentDate = function () {
   const year = `${now.getFullYear()}`;
   const hour = `${now.getHours()}`.padStart(2, 0);
   const minute = `${now.getMinutes()}`.padStart(2, 0);
-  return `${day}/${month}/${year}, ${hour}:${minute}`;
+  return ` ${day}/${month}/${year}, ${hour}:${minute}`;
 };
 export const stateDaily = {
   lng: "",
