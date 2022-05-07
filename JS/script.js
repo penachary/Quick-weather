@@ -1,6 +1,5 @@
 import * as module from "./module.js";
 import { weatherCodes } from "./config.js";
-import { markupMaker } from "./view.js";
 
 const btnDegrees = document.querySelectorAll(".degree-symbol");
 const btnCelcius = document.getElementById("celcius");
@@ -39,13 +38,9 @@ const showWeather = async function () {
   try {
     await module.wheatherForecast();
     const dailyData = module.stateDaily;
-    const stateWeekly = module.stateWeekly;
+    const weeklyData = module.stateWeekly;
 
-
-    console.log(markupMaker(1));
-
-
-
+    // current Date and country container
     const markupCurrentDate = `
     <span>${dailyData.country}, ${dailyData.city} </span>
     `;
@@ -53,7 +48,7 @@ const showWeather = async function () {
       "afterbegin",
       markupCurrentDate
     );
-
+      // Today firts container
     const markup1 = `
     <h2 class="main-adress">${dailyData.country}, ${dailyData.city}</h2>
     <div class="content-main-box">
@@ -79,7 +74,7 @@ const showWeather = async function () {
     `;
 
     firstContentContainer.insertAdjacentHTML("afterbegin", markup1);
-
+    // Today second container
     const markup2 = `
     <div class="fells-sun-icons-container">
       <div class="feels-box">
@@ -108,6 +103,9 @@ const showWeather = async function () {
     </ul>
     `;
     secondContentContainer.insertAdjacentHTML("afterbegin", markup2);
+
+
+    //
   } catch (err) {
     alert(err);
   }
