@@ -54,6 +54,16 @@ export const stateWeekly ={
   windDirection: "",
 }
 
+// funtion for spliting array into smaller pieces
+Object.defineProperty(Array.prototype, "chunk", {
+  value: function (chunkSize) {
+    let R = [];
+    for (let i = 0; i < this.length; i += chunkSize)
+      R.push(this.slice(i, i + chunkSize));
+    return R;
+  },
+});
+
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -142,10 +152,11 @@ export const wheatherForecast = async function () {
   stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_max;
   stateWeekly.rainyHours = data[0].daily.precipitation_hours;
   stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum;
-  stateWeekly.cloudCover = data[1].hourly.cloudcover; // dahası var
+  stateWeekly.cloudCover = data[1].hourly.cloudcover.chunk(24).map(a => a.reduce((ac,x )=> ac +( Math.trunc(x/24)), 0));
   stateWeekly.windGust = data[0].daily.windgusts_10m_max;
   stateWeekly.windSpeed = data[0].daily.windspeed_10m_max;
   stateWeekly.windDirection = data[0].daily.winddirection_10m_dominant;
+  console.log(stateWeekly);
   } catch (err) {
     console.log(err);
   }
@@ -163,3 +174,4 @@ export const wheatherForecast = async function () {
 //     console.log(err);
 //   }
 // };
+

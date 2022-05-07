@@ -1,5 +1,6 @@
 import * as module from "./module.js";
 import { weatherCodes } from "./config.js";
+import { markupMaker } from "./view.js";
 
 const btnDegrees = document.querySelectorAll(".degree-symbol");
 const btnCelcius = document.getElementById("celcius");
@@ -38,6 +39,12 @@ const showWeather = async function () {
   try {
     await module.wheatherForecast();
     const dailyData = module.stateDaily;
+    const stateWeekly = module.stateWeekly;
+
+
+    console.log(markupMaker(1));
+
+
 
     const markupCurrentDate = `
     <span>${dailyData.country}, ${dailyData.city} </span>
@@ -107,12 +114,3 @@ const showWeather = async function () {
 };
 showWeather();
 
-// funtion for spliting array into smaller pieces
-Object.defineProperty(Array.prototype, "chunk", {
-  value: function (chunkSize) {
-    let R = [];
-    for (let i = 0; i < this.length; i += chunkSize)
-      R.push(this.slice(i, i + chunkSize));
-    return R;
-  },
-});
