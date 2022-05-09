@@ -1,6 +1,9 @@
 .weekly-container {
   flex-direction: column;
   align-items: center;
+  /* overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory; */
 }
 .weekly-main-box {
   display: flex;
@@ -11,6 +14,9 @@
   border-radius: 8%;
   min-height: 10rem;
   height: auto;
+  /* scroll-snap-align: center; */
+
+  transition: transform 1s, opacity 1s;
 }
 .weekly-adress {
   display: block;
@@ -68,4 +74,8 @@
   background-color: rgba(0, 128, 128, 0.5);
   margin: 0.1rem;
   padding: 0.3rem;
+}
+.hidden-weekly-box{
+  opacity: 0;
+  transform: translateY(6rem);
 }

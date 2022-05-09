@@ -29,4 +29,6 @@ body {
   height: 100vh;
   background-position: center;
   background-attachment: fixed;
+  /* overflow: hidden; */
+  scroll-behavior: smooth;
 }

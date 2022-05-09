@@ -143,19 +143,19 @@ export const wheatherForecast = async function () {
       data[1].hourly.windspeed_10m[stateDaily.localTime - 1];
 
     // weekly data
-    stateWeekly.date = data[0].daily.time;
+    stateWeekly.date = data[0].daily.time.map(el => `${el.slice(8,10)}/${el.slice(5,7)}/${el.slice(0,4)}`);
     stateWeekly.weatherCode = data[0].daily.weathercode;
-    stateWeekly.dayTemp = data[0].daily.temperature_2m_max;
-    stateWeekly.nightTemp = data[0].daily.temperature_2m_min;
-    stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_max;
-    stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_min;
+    stateWeekly.dayTemp = data[0].daily.temperature_2m_max.map(el => Math.round(el));
+    stateWeekly.nightTemp = data[0].daily.temperature_2m_min.map(el => Math.round(el));
+    stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_max.map(el => Math.round(el));
+    stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_min.map(el => Math.round(el));
     stateWeekly.rainyHours = data[0].daily.precipitation_hours;
-    stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum;
+    stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum.map(el => Math.round(el));
     stateWeekly.cloudCover = data[1].hourly.cloudcover
       .chunk(24)
       .map((a) => a.reduce((ac, x) => ac + Math.trunc(x / 24), 0));
-    stateWeekly.windGust = data[0].daily.windgusts_10m_max;
-    stateWeekly.windSpeed = data[0].daily.windspeed_10m_max;
+    stateWeekly.windGust = data[0].daily.windgusts_10m_max.map(el => Math.round(el));
+    stateWeekly.windSpeed = data[0].daily.windspeed_10m_max.map(el => Math.round(el));
     stateWeekly.windDirection = data[0].daily.winddirection_10m_dominant;
   } catch (err) {
     console.log(err);

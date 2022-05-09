@@ -1,8 +1,18 @@
 .header-container {
-  /* position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%; */
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--corp-bg-darkgreen),
+    var(--corp-bg-ligtergreen)
+  ),
+  url(../images/bg-image.png);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: 0% 38%;
+z-index: 10;
 }
 .nav-container {
   position: relative;

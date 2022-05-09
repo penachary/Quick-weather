@@ -147,8 +147,31 @@ const showWeather = async function () {
       markupWeekly += markupMaker(i);
     }
     weeklyContainer.insertAdjacentHTML("afterbegin", markupWeekly);
+
+    // Reveal weekly box
+const allWeeklyBoxes = document.querySelectorAll(".weekly-main-box");
+
+const revealBoxes = function(entries, observer){
+  const [entry] = entries;
+
+  if(!entry.isIntersecting) return;
+
+  entry.target.classList.remove("hidden-weekly-box");
+  observer.unobserve(entry.target);
+}
+const weeklyBoxObserver = new IntersectionObserver(revealBoxes, {
+  root: null,
+  threshold: 0.15,
+})
+
+allWeeklyBoxes.forEach(function(box){
+  weeklyBoxObserver.observe(box);
+  box.classList.add("hidden-weekly-box");
+})
+
   } catch (err) {
     alert(err);
   }
 };
 showWeather();
+
