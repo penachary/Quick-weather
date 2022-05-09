@@ -28,4 +28,5 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
   background-position: center;
+  background-attachment: fixed;
 }

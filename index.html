@@ -30,46 +30,46 @@
     <script defer type="module" src="./JS/script.js"></script>
   </head>
   <body>
-    <header class="header_container">
+    <header class="header-container">
       <!-- Navbar -->
-      <nav class="navbar  nav_container">
-        <div class="container-fluid">
-          <a class="navbar-brand quick-wheather" href="index.html">Quick<br />Weather</a>
-          <form class="d-flex search-form">
-            <input
+        <nav class="navbar  nav-container">
+          <div class="container-fluid">
+            <a class="navbar-brand quick-wheather" href="index.html">Quick<br />Weather</a>
+            <form class="d-flex search-form">
+              <input
               class="form-control search-input"
               type="search"
               placeholder="search city or postal code"
               aria-label="Search"
-            />
-            <button type="button" class="btn btn-search">
-              <img src="./icons/search.svg
-              " alt="search icon">
-            </button>
-          </form>
-          <div class="symbol-container">
-            <span class="degree-symbol switch-degree switch-degree-btn" id="celcius" >&#8451</span>
-            <span class="degree-symbol switch-degree" id="fahrenheit" >&#8457</span>
+              />
+              <button type="button" class="btn btn-search">
+                <img src="./icons/search.svg
+                " alt="search icon">
+              </button>
+            </form>
+            <div class="symbol-container">
+              <span class="degree-symbol switch-degree switch-degree-btn" id="celcius" >&#8451</span>
+              <span class="degree-symbol switch-degree" id="fahrenheit" >&#8457</span>
+            </div>
+          </div>
+        </nav>
+        <div class="change_container">
+          <div class="current-location">
+            <!-- <span>Turkey, Istanbul</span> -->
+          </div>
+          <div class="current-date">
+            <!-- <span> 30.04.2022 15:05</span> -->
+          </div>
+          <div class="change-buttons-box">
+            <div class="change-buttons">
+              <span class="bar">HOURLY</span>
+              <span class="bar bar-switch">TODAY</span>
+              <span class="bar">WEEKLY</span>
+            </div>
           </div>
         </div>
-      </nav>
-      <div class="change_container">
-        <div class="current-location">
-          <!-- <span>Turkey, Istanbul</span> -->
-        </div>
-        <div class="current-date">
-          <!-- <span> 30.04.2022 15:05</span> -->
-        </div>
-        <div class="change-buttons-box">
-          <div class="change-buttons">
-            <span class="bar">HOURLY</span>
-            <span class="bar bar-switch">TODAY</span>
-            <span class="bar">WEEKLY</span>
-          </div>
-        </div>
-      </div>
-    </header>
-    <section class="content_container today-container hidden 
+      </header>
+      <section class="content_container today-container hidden 
     " >
       <div class="content-box first-box">
         <!-- <h2 class="main-adress">Country, City</h2>

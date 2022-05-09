@@ -145,10 +145,10 @@ export const wheatherForecast = async function () {
     // weekly data
     stateWeekly.date = data[0].daily.time;
     stateWeekly.weatherCode = data[0].daily.weathercode;
-    stateWeekly.dayTemp = data[0].daily.temperature_2m_min;
-    stateWeekly.nightTemp = data[0].daily.temperature_2m_max;
-    stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_min;
-    stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_max;
+    stateWeekly.dayTemp = data[0].daily.temperature_2m_max;
+    stateWeekly.nightTemp = data[0].daily.temperature_2m_min;
+    stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_max;
+    stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_min;
     stateWeekly.rainyHours = data[0].daily.precipitation_hours;
     stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum;
     stateWeekly.cloudCover = data[1].hourly.cloudcover
