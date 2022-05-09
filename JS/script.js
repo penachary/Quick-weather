@@ -9,7 +9,7 @@ const firstContentContainer = document.querySelector(".first-box");
 const secondContentContainer = document.querySelector(".second-box");
 const currentLocationContainer = document.querySelector(".current-location");
 const currentDateContainer = document.querySelector(".current-date");
-const weeklyContainer = document.querySelector(".weekly-main-box");
+const weeklyContainer = document.querySelector(".weekly-container");
 
 btnDegrees.forEach((btn) =>
   btn.addEventListener("click", function () {
@@ -39,6 +39,7 @@ const showWeather = async function () {
     await module.wheatherForecast();
     const dailyData = module.stateDaily;
     const weeklyData = module.stateWeekly;
+    console.log(weeklyData);
 
     // current Date and country container
     const markupCurrentDate = `
@@ -48,8 +49,8 @@ const showWeather = async function () {
       "afterbegin",
       markupCurrentDate
     );
-      // Today firts container
-    const markup1 = `
+    // Today firts container
+    const markup1Today = `
     <h2 class="main-adress">${dailyData.country}, ${dailyData.city}</h2>
     <div class="content-main-box">
       <div class="main-degree-box">
@@ -73,9 +74,9 @@ const showWeather = async function () {
     </div>
     `;
 
-    firstContentContainer.insertAdjacentHTML("afterbegin", markup1);
+    firstContentContainer.insertAdjacentHTML("afterbegin", markup1Today);
     // Today second container
-    const markup2 = `
+    const markup2Today = `
     <div class="fells-sun-icons-container">
       <div class="feels-box">
         <p>Feels  <br> ${dailyData.feels}&#176;</p>
@@ -102,13 +103,52 @@ const showWeather = async function () {
       <li class="list-daily">Wind direction  ${dailyData.windDirection}&#176;</li>
     </ul>
     `;
-    secondContentContainer.insertAdjacentHTML("afterbegin", markup2);
+    secondContentContainer.insertAdjacentHTML("afterbegin", markup2Today);
 
+    //Weekly Container
+    const markupMaker = function (num) {
+      return `
+      <div class="content-box weekly-main-box">
+        <h2 class="weekly-adress">${weeklyData.country}, ${weeklyData.city} ${weeklyData.date[num]}</h2>
+        <div class="weekly-box">
+        <div class="weekly-temp-box">
+        <p class="day-night-weekly">DAY <br></p>
+        <span class="day-night-temp-weekly">${weeklyData.dayTemp[num]}&#176; <br></span>
+          <span class="feels-temp-weekly">${weeklyData.dayTempFeel[num]}&#176;</span>
+          <span class="feels-weekly">feel</span>
+          </div>
+          <div class="weekly-temp-box">
+          <p class="day-night-weekly">Night <br></p>
+          <span class="day-night-temp-weekly">${weeklyData.nightTemp[num]}&#176; <br></span>
+          <span class="feels-temp-weekly">${weeklyData.nightTempFeel[num]}&#176;</span>
+          <span class="feels-weekly">feel</span>
+          </div>
+        <div class="weekly-icon-box">
+        <img src="./icons/${weeklyData.weatherCode[num]}.svg" alt="" srcset="">
+        </div>
+        </div>
+        <div class="weekly-box">
+        <ul class="list-group-weekly">
+        <li class="list-weekly ">Cloud cover: ${weeklyData.cloudCover[num]}%</li>
+        <li class="list-weekly ">Rainy hours: ${weeklyData.rainyHours[num]}h</li>
+          <li class="list-weekly ">Solar radiation: ${weeklyData.solarRadiation[num]}MJ/m² </li>
+        </ul>
+        <ul class="list-group-weekly">
+        <li class="list-weekly ">Windgust: ${weeklyData.windGust[num]}km/h</li>
+        <li class="list-weekly ">Windspeed: ${weeklyData.windSpeed[num]}km/h</li>
+        <li class="list-weekly ">Wind direction: ${weeklyData.windDirection[num]}&#176;</li>
+        </ul>
+        </div>
+        </div> `;
+    };
 
-    //
+    let markupWeekly = "";
+    for (let i = 0; i < 7; i++) {
+      markupWeekly += markupMaker(i);
+    }
+    weeklyContainer.insertAdjacentHTML("afterbegin", markupWeekly);
   } catch (err) {
     alert(err);
   }
 };
 showWeather();
-

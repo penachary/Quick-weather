@@ -1,3 +1,7 @@
+.weekly-container {
+  flex-direction: column;
+  align-items: center;
+}
 .weekly-main-box {
   display: flex;
   justify-content: center;
@@ -29,18 +33,18 @@
   width: 30%;
   text-align: center;
 }
-.day-night-weekly{
+.day-night-weekly {
   font-size: 1.7rem;
   margin: 0;
 }
-.day-night-temp-weekly{
+.day-night-temp-weekly {
   font-size: 1.3rem;
 }
-.feels-temp-weekly{
+.feels-temp-weekly {
   font-size: 1.3rem;
   margin-left: 1.7rem;
 }
-.feels-weekly{
+.feels-weekly {
   display: inline-block;
   font-size: 0.5rem;
   border: 2px solid white;
@@ -56,13 +60,12 @@
 .weekly-icon-box img {
   width: 8rem;
 }
-.list-group-weekly{
+.list-group-weekly {
   list-style-type: none;
   margin-right: 2rem;
 }
-.list-weekly{
+.list-weekly {
   background-color: rgba(0, 128, 128, 0.5);
   margin: 0.1rem;
   padding: 0.3rem;
-  
 }

@@ -37,7 +37,7 @@ export const stateDaily = {
   windDirection: "",
 };
 
-export const stateWeekly ={
+export const stateWeekly = {
   country: "",
   city: "",
   date: "",
@@ -52,7 +52,7 @@ export const stateWeekly ={
   windGust: "",
   windSpeed: "",
   windDirection: "",
-}
+};
 
 // funtion for spliting array into smaller pieces
 Object.defineProperty(Array.prototype, "chunk", {
@@ -118,7 +118,6 @@ export const wheatherForecast = async function () {
       getJSON(wheatherDaily),
       getJSON(wheatherHourly),
     ]);
-    console.log(data);
     // daily data
     stateDaily.dayTemp = Math.round(data[0].daily.temperature_2m_max[0]);
     stateDaily.nightTemp = Math.trunc(data[0].daily.temperature_2m_min[0]);
@@ -142,21 +141,22 @@ export const wheatherForecast = async function () {
       data[1].hourly.windgusts_10m[stateDaily.localTime - 1];
     stateDaily.windSpeed =
       data[1].hourly.windspeed_10m[stateDaily.localTime - 1];
-  
-  // weekly data
-  stateWeekly.date = data[0].daily.time;
-  stateWeekly.weatherCode = data[0].daily.weathercode;
-  stateWeekly.dayTemp = data[0].daily.temperature_2m_min;
-  stateWeekly.nightTemp = data[0].daily.temperature_2m_max;
-  stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_min;
-  stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_max;
-  stateWeekly.rainyHours = data[0].daily.precipitation_hours;
-  stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum;
-  stateWeekly.cloudCover = data[1].hourly.cloudcover.chunk(24).map(a => a.reduce((ac,x )=> ac +( Math.trunc(x/24)), 0));
-  stateWeekly.windGust = data[0].daily.windgusts_10m_max;
-  stateWeekly.windSpeed = data[0].daily.windspeed_10m_max;
-  stateWeekly.windDirection = data[0].daily.winddirection_10m_dominant;
-  console.log(stateWeekly);
+
+    // weekly data
+    stateWeekly.date = data[0].daily.time;
+    stateWeekly.weatherCode = data[0].daily.weathercode;
+    stateWeekly.dayTemp = data[0].daily.temperature_2m_min;
+    stateWeekly.nightTemp = data[0].daily.temperature_2m_max;
+    stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_min;
+    stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_max;
+    stateWeekly.rainyHours = data[0].daily.precipitation_hours;
+    stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum;
+    stateWeekly.cloudCover = data[1].hourly.cloudcover
+      .chunk(24)
+      .map((a) => a.reduce((ac, x) => ac + Math.trunc(x / 24), 0));
+    stateWeekly.windGust = data[0].daily.windgusts_10m_max;
+    stateWeekly.windSpeed = data[0].daily.windspeed_10m_max;
+    stateWeekly.windDirection = data[0].daily.winddirection_10m_dominant;
   } catch (err) {
     console.log(err);
   }
@@ -174,4 +174,3 @@ export const wheatherForecast = async function () {
 //     console.log(err);
 //   }
 // };
-
