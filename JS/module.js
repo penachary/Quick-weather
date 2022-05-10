@@ -158,6 +158,9 @@ export const wheatherForecast = async function () {
     stateWeekly.windGust = data[0].daily.windgusts_10m_max.map(el => Math.round(el));
     stateWeekly.windSpeed = data[0].daily.windspeed_10m_max.map(el => Math.round(el));
     stateWeekly.windDirection = data[0].daily.winddirection_10m_dominant;
+
+    // Hourly data
+    
   } catch (err) {
     console.log(err);
   }
