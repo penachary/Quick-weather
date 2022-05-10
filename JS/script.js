@@ -5,19 +5,27 @@ const btnDegrees = document.querySelectorAll(".degree-symbol");
 const btnCelcius = document.getElementById("celcius");
 const btnFahrenheit = document.getElementById("fahrenheit");
 const btnChangeBars = document.querySelectorAll(".bar");
+const btnHourly = document.querySelector(".btn-hourly");
+const btnToday = document.querySelector(".btn-today");
+const btnweekly = document.querySelector(".btn-weekly");
 const firstContentContainer = document.querySelector(".first-box");
 const secondContentContainer = document.querySelector(".second-box");
 const currentLocationContainer = document.querySelector(".current-location");
 const currentDateContainer = document.querySelector(".current-date");
+const todayContainer = document.querySelector(".today-container");
 const weeklyContainer = document.querySelector(".weekly-container");
-const hourlyContainer = document.querySelector(".accordion");
+const hourlyContainer = document.querySelector(".hourly-container");
+const hourlyBox = document.querySelector(".accordion");
+const allContentContainers = document.querySelectorAll(".content-container");
 
+//Degree buttons change effect
 btnDegrees.forEach((btn) =>
   btn.addEventListener("click", function () {
     if (btn.classList.contains("switch-degree-btn")) return;
     btnDegrees.forEach((btn) => btn.classList.toggle("switch-degree-btn"));
   })
 );
+// Container buttons change effect
 btnChangeBars.forEach((btn) =>
   btn.addEventListener("click", function () {
     if (btn.classList.contains("bar-switch")) return;
@@ -25,6 +33,27 @@ btnChangeBars.forEach((btn) =>
     btn.classList.add("bar-switch");
   })
 );
+
+// Adding Containers hidden class
+btnToday.addEventListener("click", function(){
+  if(!todayContainer.classList.contains("hidden")) return
+  allContentContainers.forEach(el => el.classList.add("hidden"));
+  todayContainer.classList.remove("hidden");
+});
+
+btnweekly.addEventListener("click", function(){
+  if(!weeklyContainer.classList.contains("hidden")) return
+  allContentContainers.forEach(el => el.classList.add("hidden"));
+  weeklyContainer.classList.remove("hidden");
+});
+
+btnHourly.addEventListener("click", function(){
+  if(!hourlyContainer.classList.contains("hidden")) return
+  allContentContainers.forEach(el => el.classList.add("hidden"));
+  hourlyContainer.classList.remove("hidden");
+});
+
+//Date and Time rendered 
 const showUpdateTime = function () {
   const markup = `
   <span> ${module.currentDate()} </span>
@@ -191,7 +220,7 @@ for (let i = 0; i < 12; i++) {
   markupHourly += markupMakerHourly(i);
 }
 
-hourlyContainer.insertAdjacentHTML("afterbegin", markupHourly);
+hourlyBox.insertAdjacentHTML("afterbegin", markupHourly);
 
   } catch (err) {
     alert(err);
@@ -199,3 +228,4 @@ hourlyContainer.insertAdjacentHTML("afterbegin", markupHourly);
 };
 showWeather();
 
+// 
