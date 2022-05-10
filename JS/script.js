@@ -10,6 +10,7 @@ const secondContentContainer = document.querySelector(".second-box");
 const currentLocationContainer = document.querySelector(".current-location");
 const currentDateContainer = document.querySelector(".current-date");
 const weeklyContainer = document.querySelector(".weekly-container");
+const hourlyContainer = document.querySelector(".accordion");
 
 btnDegrees.forEach((btn) =>
   btn.addEventListener("click", function () {
@@ -39,6 +40,7 @@ const showWeather = async function () {
     await module.wheatherForecast();
     const dailyData = module.stateDaily;
     const weeklyData = module.stateWeekly;
+    const hourlyData = module.stateHourly;
 
     // current Date and country container
     const markupCurrentDate = `
@@ -105,7 +107,7 @@ const showWeather = async function () {
     secondContentContainer.insertAdjacentHTML("afterbegin", markup2Today);
 
     //Weekly Container
-    const markupMaker = function (num) {
+    const markupMakerWeekly = function (num) {
       return `
       <div class="content-box weekly-main-box">
         <h2 class="weekly-adress">${weeklyData.country}, ${weeklyData.city} ${weeklyData.date[num]}</h2>
@@ -143,7 +145,7 @@ const showWeather = async function () {
 
     let markupWeekly = "";
     for (let i = 0; i < 7; i++) {
-      markupWeekly += markupMaker(i);
+      markupWeekly += markupMakerWeekly(i);
     }
     weeklyContainer.insertAdjacentHTML("afterbegin", markupWeekly);
 
@@ -168,9 +170,32 @@ allWeeklyBoxes.forEach(function(box){
   box.classList.add("hidden-weekly-box");
 })
 
+
+// Hourly Container
+const markupMakerHourly = function(num){
+  return`
+  <div class="accordion-item">
+  <h2 class="accordion-header" id="flush-heading${num + 1}">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${num + 1}" aria-expanded="false" aria-controls="flush-collapse${num + 1}">
+      ${hourlyData.date[num]} ${hourlyData.hour[num]} <span class="hourly-temp"><img src="./icons/${hourlyData.weatherCode[num]}.svg" alt="" srcset="" class="hourly-icon">${hourlyData.temperature[num]}&#176;C</span> 
+    </button>
+  </h2>
+  <div id="flush-collapse${num + 1}" class="accordion-collapse collapse" aria-labelledby="flush-heading${num + 1}" data-bs-parent="#accordionFlushExample">
+    <div class="accordion-body">The weather is ${weatherCodes[hourlyData.weatherCode[num]]} and feels ${hourlyData.feelsTemp[num]}&#176;C, relative humadity is $${hourlyData.humadity[num]}% and the cloud covers ${hourlyData.cloudCover[num]}% of the sky.</div>
+  </div>
+  </div>`;
+}
+
+let markupHourly = "";
+for (let i = 0; i < 12; i++) {
+  markupHourly += markupMakerHourly(i);
+}
+
+hourlyContainer.insertAdjacentHTML("afterbegin", markupHourly);
+
   } catch (err) {
     alert(err);
   }
 };
-// showWeather();
+showWeather();
 

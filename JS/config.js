@@ -11,18 +11,18 @@ export const GEOCODE_API_BY_IP_URL =
   "https:api.bigdatacloud.net/data/ip-geolocation-with-confidence?ip=81.214.126.173&localityLanguage=en&key=6f9a7317cdff4289b58fbd5071997b4e";
 
 export const weatherCodes = {
-  0: "Clear sky",
+  0: "Clear",
   1: "Sunny",
   2: "Partly cloudy",
   3: "Overcast",
-  45: "Fog",
-  48: "Fog",
+  45: "Foggy",
+  48: "Foggy",
   51: "Light drizzle",
   53: "Drizzle",
   55: "Dense drizzle",
   56: "Cold drizzle",
   57: "Cold drizzle",
-  61: "Light Rain",
+  61: "Light Rainy",
   63: "Rainy",
   65: "Heavy rain",
   66: "Cold rain",

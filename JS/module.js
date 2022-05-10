@@ -54,6 +54,17 @@ export const stateWeekly = {
   windDirection: "",
 };
 
+export const stateHourly = {
+  localTime:"",
+  date: "",
+  hour:"",
+  temperature: "",
+  weatherCode: "",
+  feelsTemp: "",
+  humadity:"",
+  cloudCover:"",
+}
+
 // funtion for spliting array into smaller pieces
 Object.defineProperty(Array.prototype, "chunk", {
   value: function (chunkSize) {
@@ -103,6 +114,8 @@ export const wheatherForecast = async function () {
     // weekly data
     stateWeekly.country = dataIP.country.isoName;
     stateWeekly.city = dataIP.location.city;
+    //Hourly data
+    stateHourly.localTime = +dataIP.location.timeZone.localTime.slice(11, 13);
 
     const wheatherDaily = await WHEATHER_DAILY_API_URL(
       stateDaily.lat,
@@ -160,7 +173,14 @@ export const wheatherForecast = async function () {
     stateWeekly.windDirection = data[0].daily.winddirection_10m_dominant;
 
     // Hourly data
-    
+    stateHourly.date = data[1].hourly.time.slice(stateHourly.localTime + 1, stateHourly.localTime + 13).map(el => `${el.slice(8,10)}/${el.slice(5,7)}/${el.slice(0,4)}`);
+    stateHourly.hour = data[1].hourly.time.slice(stateHourly.localTime + 1, stateHourly.localTime + 13).map(el => el.slice(11,16));
+    stateHourly.temperature = data[1].hourly.temperature_2m.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);
+    stateHourly.weatherCode = data[1].hourly.weathercode.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);
+    stateHourly.feelsTemp = data[1].hourly.apparent_temperature.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);
+    stateHourly.humadity = data[1].hourly.relativehumidity_2m.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);    
+    stateHourly.cloudCover = data[1].hourly.cloudcover.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);
+    console.log(stateHourly);
   } catch (err) {
     console.log(err);
   }
