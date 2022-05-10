@@ -39,7 +39,6 @@ const showWeather = async function () {
     await module.wheatherForecast();
     const dailyData = module.stateDaily;
     const weeklyData = module.stateWeekly;
-    console.log(weeklyData);
 
     // current Date and country container
     const markupCurrentDate = `
@@ -173,5 +172,5 @@ allWeeklyBoxes.forEach(function(box){
     alert(err);
   }
 };
-showWeather();
+// showWeather();
 

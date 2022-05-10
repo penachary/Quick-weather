@@ -118,6 +118,7 @@ export const wheatherForecast = async function () {
       getJSON(wheatherDaily),
       getJSON(wheatherHourly),
     ]);
+    console.log(data);
     // daily data
     stateDaily.dayTemp = Math.round(data[0].daily.temperature_2m_max[0]);
     stateDaily.nightTemp = Math.trunc(data[0].daily.temperature_2m_min[0]);

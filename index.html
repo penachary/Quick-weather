@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="./CSS/content_container.css" />
     <link rel="stylesheet" href="./CSS/header_container.css">
     <link rel="stylesheet" href="./CSS/weekly.css">
+    <link rel="stylesheet" href="./CSS/hourly.css">
     <script defer type="module" src="./JS/script.js"></script>
   </head>
   <body>
@@ -69,7 +70,7 @@
           </div>
         </div>
       </header>
-      <section class="content_container today-container hidden 
+      <section class="content-container today-container hidden 
     " >
       <div class="content-box first-box">
         <!-- <h2 class="main-adress">Country, City</h2>
@@ -116,7 +117,7 @@
         </ul> -->
       </div>
     </section>
-    <section class="content_container weekly-container ">
+    <section class="content-container weekly-container hidden">
       <!-- <div class="content-box weekly-main-box">
         <h2 class="weekly-adress">Country, City date</h2>
         <div class="weekly-box">
@@ -214,8 +215,44 @@
         </div> 
       </div> -->
     </section>
+    <section class="content-container">
+      <div class="hourly-container">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Accordion Item #1
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Accordion Item #2
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Accordion Item #3
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
     <footer class="footer_container"></footer>
   </body>
-</html>
-<!-- font-family: 'Changa', sans-serif;
-font-family: 'Sora', sans-serif; -->
+  </html>
+  <!-- font-family: 'Changa', sans-serif;
+    font-family: 'Sora', sans-serif; -->
