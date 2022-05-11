@@ -10,6 +10,10 @@ export const GEOCODE_API_URL = function (city) {
 export const GEOCODE_API_BY_IP_URL =
   "https:api.bigdatacloud.net/data/ip-geolocation-with-confidence?ip=81.214.126.173&localityLanguage=en&key=6f9a7317cdff4289b58fbd5071997b4e";
 
+export const REVERSE_GEOCODİNG_API_TİMEZONE = function (lat, lng) {
+  return `https://api.bigdatacloud.net/data/reverse-geocode-with-timezone?latitude=${lat}&longitude=${lng}&localityLanguage=en&key=6f9a7317cdff4289b58fbd5071997b4e`;
+};
+
 export const weatherCodes = {
   0: "Clear",
   1: "Sunny",
