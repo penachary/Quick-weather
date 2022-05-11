@@ -1,5 +1,6 @@
 import * as module from "./module.js";
 import { weatherCodes } from "./config.js";
+import todayFirstBoxView from "./view.js";
 
 const btnDegrees = document.querySelectorAll(".degree-symbol");
 const btnCelcius = document.getElementById("celcius");
@@ -35,25 +36,25 @@ btnChangeBars.forEach((btn) =>
 );
 
 // Adding Containers hidden class
-btnToday.addEventListener("click", function(){
-  if(!todayContainer.classList.contains("hidden")) return
-  allContentContainers.forEach(el => el.classList.add("hidden"));
+btnToday.addEventListener("click", function () {
+  if (!todayContainer.classList.contains("hidden")) return;
+  allContentContainers.forEach((el) => el.classList.add("hidden"));
   todayContainer.classList.remove("hidden");
 });
 
-btnweekly.addEventListener("click", function(){
-  if(!weeklyContainer.classList.contains("hidden")) return
-  allContentContainers.forEach(el => el.classList.add("hidden"));
+btnweekly.addEventListener("click", function () {
+  if (!weeklyContainer.classList.contains("hidden")) return;
+  allContentContainers.forEach((el) => el.classList.add("hidden"));
   weeklyContainer.classList.remove("hidden");
 });
 
-btnHourly.addEventListener("click", function(){
-  if(!hourlyContainer.classList.contains("hidden")) return
-  allContentContainers.forEach(el => el.classList.add("hidden"));
+btnHourly.addEventListener("click", function () {
+  if (!hourlyContainer.classList.contains("hidden")) return;
+  allContentContainers.forEach((el) => el.classList.add("hidden"));
   hourlyContainer.classList.remove("hidden");
 });
 
-//Date and Time rendered 
+//Date and Time rendered
 const showUpdateTime = function () {
   const markup = `
   <span> ${module.currentDate()} </span>
@@ -80,31 +81,32 @@ const showWeather = async function () {
       markupCurrentDate
     );
     // Today firts container
-    const markup1Today = `
-    <h2 class="main-adress">${dailyData.country}, ${dailyData.city}</h2>
-    <div class="content-main-box">
-      <div class="main-degree-box">
-        <span class="main-degree">${dailyData.temperature}&#176;</span>
-      </div>
-      <div class="main-icon-box">
-        <img class="main-icon" src="./icons/${
-          dailyData.weatherCode
-        }.svg" alt="icons">
-      </div>
-      <div class="main-wheather-detail-box"> 
-        <p class="main-wheather-detail">${
-          weatherCodes[dailyData.weatherCode]
-        }</p>
-      </div>
-      <div class="main-daynight-box">
-        <span class="main-daynight" >Day ${dailyData.dayTemp}&#176; - Night ${
-      dailyData.nightTemp
-    }&#176;</span>
-      </div>
-    </div>
-    `;
+    todayFirstBoxView.render(dailyData);
+    // const markup1Today = `
+    // <h2 class="main-adress">${dailyData.country}, ${dailyData.city}</h2>
+    // <div class="content-main-box">
+    //   <div class="main-degree-box">
+    //     <span class="main-degree">${dailyData.temperature}&#176;</span>
+    //   </div>
+    //   <div class="main-icon-box">
+    //     <img class="main-icon" src="./icons/${
+    //       dailyData.weatherCode
+    //     }.svg" alt="icons">
+    //   </div>
+    //   <div class="main-wheather-detail-box">
+    //     <p class="main-wheather-detail">${
+    //       weatherCodes[dailyData.weatherCode]
+    //     }</p>
+    //   </div>
+    //   <div class="main-daynight-box">
+    //     <span class="main-daynight" >Day ${dailyData.dayTemp}&#176; - Night ${
+    //   dailyData.nightTemp
+    // }&#176;</span>
+    //   </div>
+    // </div>
+    // `;
 
-    firstContentContainer.insertAdjacentHTML("afterbegin", markup1Today);
+    // firstContentContainer.insertAdjacentHTML("afterbegin", markup1Today);
     // Today second container
     const markup2Today = `
     <div class="fells-sun-icons-container">
@@ -179,53 +181,67 @@ const showWeather = async function () {
     weeklyContainer.insertAdjacentHTML("afterbegin", markupWeekly);
 
     // Reveal weekly box
-const allWeeklyBoxes = document.querySelectorAll(".weekly-main-box");
+    const allWeeklyBoxes = document.querySelectorAll(".weekly-main-box");
 
-const revealBoxes = function(entries, observer){
-  const [entry] = entries;
+    const revealBoxes = function (entries, observer) {
+      const [entry] = entries;
 
-  if(!entry.isIntersecting) return;
+      if (!entry.isIntersecting) return;
 
-  entry.target.classList.remove("hidden-weekly-box");
-  observer.unobserve(entry.target);
-}
-const weeklyBoxObserver = new IntersectionObserver(revealBoxes, {
-  root: null,
-  threshold: 0.15,
-})
+      entry.target.classList.remove("hidden-weekly-box");
+      observer.unobserve(entry.target);
+    };
+    const weeklyBoxObserver = new IntersectionObserver(revealBoxes, {
+      root: null,
+      threshold: 0.15,
+    });
 
-allWeeklyBoxes.forEach(function(box){
-  weeklyBoxObserver.observe(box);
-  box.classList.add("hidden-weekly-box");
-})
+    allWeeklyBoxes.forEach(function (box) {
+      weeklyBoxObserver.observe(box);
+      box.classList.add("hidden-weekly-box");
+    });
 
-
-// Hourly Container
-const markupMakerHourly = function(num){
-  return`
+    // Hourly Container
+    const markupMakerHourly = function (num) {
+      return `
   <div class="accordion-item">
   <h2 class="accordion-header" id="flush-heading${num + 1}">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${num + 1}" aria-expanded="false" aria-controls="flush-collapse${num + 1}">
-      ${hourlyData.date[num]} ${hourlyData.hour[num]} <span class="hourly-temp"><img src="./icons/${hourlyData.weatherCode[num]}.svg" alt="" srcset="" class="hourly-icon">${hourlyData.temperature[num]}&#176;C</span> 
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${
+      num + 1
+    }" aria-expanded="false" aria-controls="flush-collapse${num + 1}">
+      ${hourlyData.date[num]} ${
+        hourlyData.hour[num]
+      } <span class="hourly-temp"><img src="./icons/${
+        hourlyData.weatherCode[num]
+      }.svg" alt="" srcset="" class="hourly-icon">${
+        hourlyData.temperature[num]
+      }&#176;C</span> 
     </button>
   </h2>
-  <div id="flush-collapse${num + 1}" class="accordion-collapse collapse" aria-labelledby="flush-heading${num + 1}" data-bs-parent="#accordionFlushExample">
-    <div class="accordion-body">The weather is ${weatherCodes[hourlyData.weatherCode[num]]} and feels ${hourlyData.feelsTemp[num]}&#176;C, relative humadity is $${hourlyData.humadity[num]}% and the cloud covers ${hourlyData.cloudCover[num]}% of the sky.</div>
+  <div id="flush-collapse${
+    num + 1
+  }" class="accordion-collapse collapse" aria-labelledby="flush-heading${
+        num + 1
+      }" data-bs-parent="#accordionFlushExample">
+    <div class="accordion-body">The weather is ${
+      weatherCodes[hourlyData.weatherCode[num]]
+    } and feels ${hourlyData.feelsTemp[num]}&#176;C, relative humadity is $${
+        hourlyData.humadity[num]
+      }% and the cloud covers ${hourlyData.cloudCover[num]}% of the sky.</div>
   </div>
   </div>`;
-}
+    };
 
-let markupHourly = "";
-for (let i = 0; i < 12; i++) {
-  markupHourly += markupMakerHourly(i);
-}
+    let markupHourly = "";
+    for (let i = 0; i < 12; i++) {
+      markupHourly += markupMakerHourly(i);
+    }
 
-hourlyBox.insertAdjacentHTML("afterbegin", markupHourly);
-
+    hourlyBox.insertAdjacentHTML("afterbegin", markupHourly);
   } catch (err) {
     alert(err);
   }
 };
 showWeather();
 
-// 
+//
