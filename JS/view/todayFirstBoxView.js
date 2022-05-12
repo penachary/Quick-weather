@@ -1,4 +1,4 @@
-import { weatherCodes } from "./config.js";
+import { weatherCodes } from "../config.js";
 
 class TodayFirstBoxView {
   _parentElement = document.querySelector(".first-box");
