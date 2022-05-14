@@ -18,6 +18,12 @@ const todayContainer = document.querySelector(".today-container");
 const weeklyContainer = document.querySelector(".weekly-container");
 const hourlyContainer = document.querySelector(".hourly-container");
 const allContentContainers = document.querySelectorAll(".content-container");
+const search = document.querySelector("input");
+const btnSearch = document.querySelector(".btn-search");
+
+btnSearch.addEventListener("click", function (e) {
+  console.log("ssss", search.value);
+});
 
 //Degree buttons change effect
 btnDegrees.forEach((btn) =>
@@ -112,7 +118,6 @@ const showWeather = async function () {
 
     // Hourly Container
     hourlyContainerView.render(hourlyData);
-
   } catch (err) {
     alert(err);
   }

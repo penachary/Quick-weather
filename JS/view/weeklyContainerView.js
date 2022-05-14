@@ -8,7 +8,6 @@ class WeeklyContainerView {
     this._data = data;
     const markup = this._generateMarkup();
     this.clear();
-    console.log(this._data);
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 

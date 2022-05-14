@@ -55,15 +55,15 @@ export const stateWeekly = {
 };
 
 export const stateHourly = {
-  localTime:"",
+  localTime: "",
   date: "",
-  hour:"",
+  hour: "",
   temperature: "",
   weatherCode: "",
   feelsTemp: "",
-  humadity:"",
-  cloudCover:"",
-}
+  humadity: "",
+  cloudCover: "",
+};
 
 // funtion for spliting array into smaller pieces
 Object.defineProperty(Array.prototype, "chunk", {
@@ -131,7 +131,6 @@ export const wheatherForecast = async function () {
       getJSON(wheatherDaily),
       getJSON(wheatherHourly),
     ]);
-    console.log(data);
     // daily data
     stateDaily.dayTemp = Math.round(data[0].daily.temperature_2m_max[0]);
     stateDaily.nightTemp = Math.trunc(data[0].daily.temperature_2m_min[0]);
@@ -157,30 +156,64 @@ export const wheatherForecast = async function () {
       data[1].hourly.windspeed_10m[stateDaily.localTime - 1];
 
     // weekly data
-    stateWeekly.date = data[0].daily.time.map(el => `${el.slice(8,10)}/${el.slice(5,7)}/${el.slice(0,4)}`);
+    stateWeekly.date = data[0].daily.time.map(
+      (el) => `${el.slice(8, 10)}/${el.slice(5, 7)}/${el.slice(0, 4)}`
+    );
     stateWeekly.weatherCode = data[0].daily.weathercode;
-    stateWeekly.dayTemp = data[0].daily.temperature_2m_max.map(el => Math.round(el));
-    stateWeekly.nightTemp = data[0].daily.temperature_2m_min.map(el => Math.round(el));
-    stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_max.map(el => Math.round(el));
-    stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_min.map(el => Math.round(el));
+    stateWeekly.dayTemp = data[0].daily.temperature_2m_max.map((el) =>
+      Math.round(el)
+    );
+    stateWeekly.nightTemp = data[0].daily.temperature_2m_min.map((el) =>
+      Math.round(el)
+    );
+    stateWeekly.dayTempFeel = data[0].daily.apparent_temperature_max.map((el) =>
+      Math.round(el)
+    );
+    stateWeekly.nightTempFeel = data[0].daily.apparent_temperature_min.map(
+      (el) => Math.round(el)
+    );
     stateWeekly.rainyHours = data[0].daily.precipitation_hours;
-    stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum.map(el => Math.round(el));
+    stateWeekly.solarRadiation = data[0].daily.shortwave_radiation_sum.map(
+      (el) => Math.round(el)
+    );
     stateWeekly.cloudCover = data[1].hourly.cloudcover
       .chunk(24)
       .map((a) => a.reduce((ac, x) => ac + Math.trunc(x / 24), 0));
-    stateWeekly.windGust = data[0].daily.windgusts_10m_max.map(el => Math.round(el));
-    stateWeekly.windSpeed = data[0].daily.windspeed_10m_max.map(el => Math.round(el));
+    stateWeekly.windGust = data[0].daily.windgusts_10m_max.map((el) =>
+      Math.round(el)
+    );
+    stateWeekly.windSpeed = data[0].daily.windspeed_10m_max.map((el) =>
+      Math.round(el)
+    );
     stateWeekly.windDirection = data[0].daily.winddirection_10m_dominant;
 
     // Hourly data
-    stateHourly.date = data[1].hourly.time.slice(stateHourly.localTime + 1, stateHourly.localTime + 13).map(el => `${el.slice(8,10)}/${el.slice(5,7)}/${el.slice(0,4)}`);
-    stateHourly.hour = data[1].hourly.time.slice(stateHourly.localTime + 1, stateHourly.localTime + 13).map(el => el.slice(11,16));
-    stateHourly.temperature = data[1].hourly.temperature_2m.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);
-    stateHourly.weatherCode = data[1].hourly.weathercode.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);
-    stateHourly.feelsTemp = data[1].hourly.apparent_temperature.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);
-    stateHourly.humadity = data[1].hourly.relativehumidity_2m.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);    
-    stateHourly.cloudCover = data[1].hourly.cloudcover.slice(stateHourly.localTime + 1, stateHourly.localTime + 13);
-    console.log(stateHourly);
+    stateHourly.date = data[1].hourly.time
+      .slice(stateHourly.localTime + 1, stateHourly.localTime + 13)
+      .map((el) => `${el.slice(8, 10)}/${el.slice(5, 7)}/${el.slice(0, 4)}`);
+    stateHourly.hour = data[1].hourly.time
+      .slice(stateHourly.localTime + 1, stateHourly.localTime + 13)
+      .map((el) => el.slice(11, 16));
+    stateHourly.temperature = data[1].hourly.temperature_2m.slice(
+      stateHourly.localTime + 1,
+      stateHourly.localTime + 13
+    );
+    stateHourly.weatherCode = data[1].hourly.weathercode.slice(
+      stateHourly.localTime + 1,
+      stateHourly.localTime + 13
+    );
+    stateHourly.feelsTemp = data[1].hourly.apparent_temperature.slice(
+      stateHourly.localTime + 1,
+      stateHourly.localTime + 13
+    );
+    stateHourly.humadity = data[1].hourly.relativehumidity_2m.slice(
+      stateHourly.localTime + 1,
+      stateHourly.localTime + 13
+    );
+    stateHourly.cloudCover = data[1].hourly.cloudcover.slice(
+      stateHourly.localTime + 1,
+      stateHourly.localTime + 13
+    );
   } catch (err) {
     console.log(err);
   }
