@@ -46,9 +46,7 @@ class HourlyContainerView {
     }" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">The weather is ${
           weatherCodes[this._data.weatherCode[num]]
-        } and feels ${
-      this._data.feelsTemp[num]
-    }&#176;C, relative humadity is $${
+        } and feels ${this._data.feelsTemp[num]}&#176;C, relative humadity is ${
       this._data.humadity[num]
     }% and the cloud covers ${this._data.cloudCover[num]}% of the sky.</div>
         </div>

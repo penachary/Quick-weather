@@ -15,8 +15,8 @@
   min-height: 22rem;
   width: 35%;
   margin: 1.5rem;
-  border: 2px solid var(--corp-dark-blue);
-  border-radius: 7%;
+  /* border: 2px solid var(--corp-dark-blue); */
+  border-radius: 3%;
 }
 /* First box */
 .main-adress {
@@ -96,7 +96,7 @@
   padding-top: 0.8rem;
 }
 .feels-box p {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
   font-family: "Sora", sans-serif;
 }
