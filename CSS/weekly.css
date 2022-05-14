@@ -75,7 +75,7 @@
   margin: 0.1rem;
   padding: 0.3rem;
 }
-.hidden-weekly-box{
+.hidden-weekly-box {
   opacity: 0;
   transform: translateY(6rem);
 }

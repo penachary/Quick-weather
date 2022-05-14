@@ -34,14 +34,14 @@ class TodaySecondBoxView {
         </div>
         </div>
         <ul class="list-group-daily daily-group1">
-        <li class="list-daily">Pressure ${this._data.pressure}hPa</li>
-        <li class="list-daily">Humidity ${this._data.humidity}%</li>
-        <li class="list-daily">Cloud cover ${this._data.cloudCover}% </li>
+        <li class="list-daily">Pressure: ${this._data.pressure}hPa</li>
+        <li class="list-daily">Humidity: ${this._data.humidity}%</li>
+        <li class="list-daily">Cloud cover: ${this._data.cloudCover}% </li>
         </ul>
         <ul class="list-group-daily daily-group2">
-        <li class="list-daily">Windgust ${this._data.windGust}km/h</li>
-        <li class="list-daily">Windspeed  ${this._data.windSpeed}km/h</li>
-        <li class="list-daily">Wind direction  ${this._data.windDirection}&#176;</li>
+        <li class="list-daily">Windgust: ${this._data.windGust}km/h</li>
+        <li class="list-daily">Windspeed:  ${this._data.windSpeed}km/h</li>
+        <li class="list-daily">Wind direction:   <img style="transform:rotate(-${this._data.windDirection}deg)" src="./icons/arrow-wind-direction.svg" alt="" class=""></li>
         </ul>`;
   }
 }

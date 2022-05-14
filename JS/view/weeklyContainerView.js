@@ -17,11 +17,11 @@ class WeeklyContainerView {
   }
 
   _generateMarkup() {
-      let markup = "";
-        for (let i = 0; i < 7; i++) {
-        markup += this._markupMakerWeekly(i);
-        }   
-      return markup  
+    let markup = "";
+    for (let i = 0; i < 7; i++) {
+      markup += this._markupMakerWeekly(i);
+    }
+    return markup;
   }
   _markupMakerWeekly = function (num) {
     return `
@@ -53,7 +53,8 @@ class WeeklyContainerView {
       <ul class="list-group-weekly">
       <li class="list-weekly ">Windgust: ${this._data.windGust[num]}km/h</li>
       <li class="list-weekly ">Windspeed: ${this._data.windSpeed[num]}km/h</li>
-      <li class="list-weekly ">Wind direction: ${this._data.windDirection[num]}&#176;</li>
+      <li class="list-weekly ">Wind direction: <img style="transform:rotate(-${this._data.windDirection[num]}deg)" src="./icons/arrow-wind-direction.svg" alt="" class="">
+      </li>
       </ul>
       </div>
       </div> `;
