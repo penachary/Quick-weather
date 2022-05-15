@@ -3,6 +3,7 @@ import {
   WHEATHER_HOURLY_API_URL,
   GEOCODE_API_URL,
   GEOCODE_API_BY_IP_URL,
+  REVERSE_GEOCODING_API_TIMEZONE,
 } from "./config.js";
 
 export const currentDate = function () {
@@ -80,12 +81,14 @@ const getPosition = function () {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
-// const pos = await getPosition();
-//   console.log(pos);
-//   const {latitude: lat, longitude: lng} = pos.coords;
-export const geocodingAPIbyIP = async function () {
+const pos = await getPosition();
+const {latitude: lat, longitude: lng} = pos.coords;
+stateDaily.lat = lat
+stateDaily.lng = lng
+console.log(stateDaily);
+const geocodingAPI = async function (lat, lng) {
   try {
-    const res = await fetch(GEOCODE_API_BY_IP_URL);
+    const res = await fetch(REVERSE_GEOCODING_API_TIMEZONE(lat, lng));
     if (!res.ok) throw new Error("problem");
     const data = await res.json();
     return data;
@@ -93,6 +96,16 @@ export const geocodingAPIbyIP = async function () {
     console.log(err);
   }
 };
+// export const geocodingAPIbyIP = async function () {
+//   try {
+//     const res = await fetch(GEOCODE_API_BY_IP_URL);
+//     if (!res.ok) throw new Error("problem");
+//     const data = await res.json();
+//     return data;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 const getJSON = function (url, errorMsg = "Something went wrong!!!") {
   return fetch(url).then((response) => {
@@ -102,20 +115,19 @@ const getJSON = function (url, errorMsg = "Something went wrong!!!") {
 };
 export const wheatherForecast = async function () {
   try {
-    const dataIP = await geocodingAPIbyIP();
+    const dataIP = await geocodingAPI(stateDaily.lat, stateDaily.lng);
+    console.log(dataIP);
     // daily data
-    stateDaily.country = dataIP.country.isoName;
-    stateDaily.city = dataIP.location.city;
-    stateDaily.lng = dataIP.location.longitude;
-    stateDaily.lat = dataIP.location.latitude;
-    stateDaily.localTime = +dataIP.location.timeZone.localTime.slice(11, 13);
-    stateDaily.timezone = dataIP.location.timeZone.ianaTimeId;
-    stateDaily.continent = dataIP.location.timeZone.ianaTimeId.split("/")[0];
+    stateDaily.country = dataIP.countryName;
+    stateDaily.city = dataIP.city;
+    stateDaily.localTime = +dataIP.timeZone.localTime.slice(11, 13);
+    stateDaily.timezone = dataIP.timeZone.ianaTimeId;
+    stateDaily.continent = dataIP.timeZone.ianaTimeId.split("/")[0];
     // weekly data
-    stateWeekly.country = dataIP.country.isoName;
-    stateWeekly.city = dataIP.location.city;
+    stateWeekly.country = dataIP.countryName;
+    stateWeekly.city = dataIP.city;
     //Hourly data
-    stateHourly.localTime = +dataIP.location.timeZone.localTime.slice(11, 13);
+    stateHourly.localTime = +dataIP.timeZone.localTime.slice(11, 13);
 
     const wheatherDaily = await WHEATHER_DAILY_API_URL(
       stateDaily.lat,
@@ -154,6 +166,8 @@ export const wheatherForecast = async function () {
       data[1].hourly.windgusts_10m[stateDaily.localTime - 1];
     stateDaily.windSpeed =
       data[1].hourly.windspeed_10m[stateDaily.localTime - 1];
+
+    console.log(stateDaily);
 
     // weekly data
     stateWeekly.date = data[0].daily.time.map(
