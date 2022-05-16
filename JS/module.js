@@ -1,3 +1,4 @@
+import dropdownView from "./view/dropdownView.js";
 import {
   WHEATHER_DAILY_API_URL,
   WHEATHER_HOURLY_API_URL,
@@ -68,6 +69,15 @@ export const stateHourly = {
   cloudCover: "",
 };
 // Search functionality
+
+//search data object
+export const stateSearch = {
+  country: [],
+  cityName: [],
+  lat: [],
+  lng: [],
+};
+
 const getCityCord = async function (city) {
   try {
     const res = await fetch(GEOCODE_API_URL(city));
@@ -79,21 +89,34 @@ const getCityCord = async function (city) {
   }
 };
 
-const searchFunction = function(e){
+const searchFunction = function (e) {
   const text = e.target.value.toLowerCase();
-  console.log(text);
-  if(text.length > 2) {
-    const getCord = async function(){
-      try{
-        const data = await getCityCord(text)
+  if (text.length > 2) {
+    const getCord = async function () {
+      try {
+        // empty stateSearch object
+        stateSearch.lat = [];
+        stateSearch.lng = [];
+        stateSearch.country = [];
+        stateSearch.cityName = [];
+
+        const { data } = await getCityCord(text);
         console.log(data);
-      }catch(err){
+        data.map((el) => {
+          stateSearch.lat.push(el.latitude);
+          stateSearch.lng.push(el.longitude);
+          stateSearch.country.push(el.country);
+          stateSearch.cityName.push(el.name);
+        });
+        console.log(stateSearch);
+        dropdownView.render(stateSearch);
+      } catch (err) {
         console.log(err);
       }
-    }
-    getCord();  
+    };
+    getCord();
   }
-}
+};
 search.addEventListener("keyup", searchFunction);
 
 // funtion for spliting array into smaller pieces
@@ -113,9 +136,9 @@ const getPosition = function () {
   });
 };
 const pos = await getPosition();
-const {latitude: lat, longitude: lng} = pos.coords;
-stateDaily.lat = lat
-stateDaily.lng = lng
+const { latitude: lat, longitude: lng } = pos.coords;
+stateDaily.lat = lat;
+stateDaily.lng = lng;
 // Reverse geocoding function that returns data object
 const geocodingAPI = async function (lat, lng) {
   try {
