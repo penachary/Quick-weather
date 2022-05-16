@@ -1,5 +1,4 @@
 import * as module from "./module.js";
-import { weatherCodes } from "./config.js";
 import todayFirstBoxView from "./view/todayFirstBoxView.js";
 import todaySecondBoxView from "./view/todaySecondBoxView.js";
 import weeklyContainerView from "./view/weeklyContainerView.js";
@@ -18,12 +17,8 @@ const todayContainer = document.querySelector(".today-container");
 const weeklyContainer = document.querySelector(".weekly-container");
 const hourlyContainer = document.querySelector(".hourly-container");
 const allContentContainers = document.querySelectorAll(".content-container");
-const search = document.querySelector("input");
+const search = document.querySelector(".search-input");
 const btnSearch = document.querySelector(".btn-search");
-
-btnSearch.addEventListener("click", function (e) {
-  console.log("ssss", search.value);
-});
 
 //Degree buttons change effect
 btnDegrees.forEach((btn) =>

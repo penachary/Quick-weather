@@ -6,6 +6,8 @@ import {
   REVERSE_GEOCODING_API_TIMEZONE,
 } from "./config.js";
 
+const search = document.querySelector(".search-input");
+
 export const currentDate = function () {
   const now = new Date();
   const day = `${now.getDate()}`.padStart(2, 0);
@@ -65,6 +67,34 @@ export const stateHourly = {
   humadity: "",
   cloudCover: "",
 };
+// Search functionality
+const getCityCord = async function (city) {
+  try {
+    const res = await fetch(GEOCODE_API_URL(city));
+    if (!res.ok) throw new Error("problem");
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const searchFunction = function(e){
+  const text = e.target.value.toLowerCase();
+  console.log(text);
+  if(text.length > 2) {
+    const getCord = async function(){
+      try{
+        const data = await getCityCord(text)
+        console.log(data);
+      }catch(err){
+        console.log(err);
+      }
+    }
+    getCord();  
+  }
+}
+search.addEventListener("keyup", searchFunction);
 
 // funtion for spliting array into smaller pieces
 Object.defineProperty(Array.prototype, "chunk", {
@@ -76,6 +106,7 @@ Object.defineProperty(Array.prototype, "chunk", {
   },
 });
 
+// Position of user
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -85,7 +116,7 @@ const pos = await getPosition();
 const {latitude: lat, longitude: lng} = pos.coords;
 stateDaily.lat = lat
 stateDaily.lng = lng
-console.log(stateDaily);
+// Reverse geocoding function that returns data object
 const geocodingAPI = async function (lat, lng) {
   try {
     const res = await fetch(REVERSE_GEOCODING_API_TIMEZONE(lat, lng));
@@ -96,23 +127,15 @@ const geocodingAPI = async function (lat, lng) {
     console.log(err);
   }
 };
-// export const geocodingAPIbyIP = async function () {
-//   try {
-//     const res = await fetch(GEOCODE_API_BY_IP_URL);
-//     if (!res.ok) throw new Error("problem");
-//     const data = await res.json();
-//     return data;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
+// Function that accepts API and returns data object as JSON
 const getJSON = function (url, errorMsg = "Something went wrong!!!") {
   return fetch(url).then((response) => {
     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
     return response.json();
   });
 };
+
+// Main function
 export const wheatherForecast = async function () {
   try {
     const dataIP = await geocodingAPI(stateDaily.lat, stateDaily.lng);
