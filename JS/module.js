@@ -18,9 +18,11 @@ export const currentDate = function () {
   const minute = `${now.getMinutes()}`.padStart(2, 0);
   return ` ${day}/${month}/${year}, ${hour}:${minute}`;
 };
+export let isLocal = true;
 export const stateDaily = {
   lng: "",
   lat: "",
+  label: "",
   continent: "",
   country: "",
   city: "",
@@ -71,12 +73,7 @@ export const stateHourly = {
 // Search functionality
 
 //search data object
-export const stateSearch = {
-  country: [],
-  cityName: [],
-  lat: [],
-  lng: [],
-};
+export let stateSearch = [];
 
 const getCityCord = async function (city) {
   try {
@@ -89,15 +86,13 @@ const getCityCord = async function (city) {
   }
 };
 
-const clearStateSearch = function(){
-  stateSearch.lat = [];
-  stateSearch.lng = [];
-  stateSearch.country = [];
-  stateSearch.cityName = [];
-}
+const clearStateSearch = function () {
+  stateSearch = [];
+};
 
 const searchFunction = function (e) {
   const text = e.target.value.toLowerCase();
+  isLocal = false;
   dropdownView.clear();
   if (text.length > 2) {
     const getCord = async function () {
@@ -106,12 +101,12 @@ const searchFunction = function (e) {
         const { data } = await getCityCord(text);
         clearStateSearch();
         data.map((el) => {
-          stateSearch.lat.push(el.latitude);
-          stateSearch.lng.push(el.longitude);
-          stateSearch.country.push(el.country);
-          stateSearch.cityName.push(el.name);
+          stateSearch.push({
+            label: el.label,
+            lat: el.latitude,
+            lng: el.longitude,
+          });
         });
-        console.log(stateSearch);
         dropdownView.render(stateSearch);
       } catch (err) {
         console.log(err);
@@ -134,14 +129,15 @@ Object.defineProperty(Array.prototype, "chunk", {
 
 // Position of user
 const getPosition = function () {
+  isLocal = true;
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
-      const pos = await getPosition();
-      const { latitude: lat, longitude: lng } = pos.coords;
-      stateDaily.lat = lat;
-      stateDaily.lng = lng;
+const pos = await getPosition();
+const { latitude: lat, longitude: lng } = pos.coords;
+stateDaily.lat = lat;
+stateDaily.lng = lng;
 // Reverse geocoding function that returns data object
 const geocodingAPI = async function (lat, lng) {
   try {
@@ -166,9 +162,14 @@ export const wheatherForecast = async function () {
   try {
     const dataIP = await geocodingAPI(stateDaily.lat, stateDaily.lng);
     // daily data
-    stateDaily.country = dataIP.countryName;
+    if (isLocal) {
+      stateDaily.country = dataIP.countryName + ", " + dataIP.city;
+    }
     stateDaily.city = dataIP.city;
-    stateDaily.localTime = +dataIP.timeZone.localTime.slice(11, 13) === 0 ? 24 : +dataIP.timeZone.localTime.slice(11, 13);
+    stateDaily.localTime =
+      +dataIP.timeZone.localTime.slice(11, 13) === 0
+        ? 24
+        : +dataIP.timeZone.localTime.slice(11, 13);
     stateDaily.timezone = dataIP.timeZone.ianaTimeId;
     stateDaily.continent = dataIP.timeZone.ianaTimeId.split("/")[0];
     // weekly data
@@ -180,8 +181,7 @@ export const wheatherForecast = async function () {
     const wheatherDaily = await WHEATHER_DAILY_API_URL(
       stateDaily.lat,
       stateDaily.lng,
-      stateDaily.continent,
-      stateDaily.city
+      stateDaily.timezone
     );
     const wheatherHourly = await WHEATHER_HOURLY_API_URL(
       stateDaily.lat,

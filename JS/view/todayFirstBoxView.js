@@ -17,7 +17,9 @@ class TodayFirstBoxView {
 
   _generateMarkup() {
     return `
-    <h2 class="main-adress">${this._data.country}, ${this._data.city}</h2>
+    <h2 class="main-adress">${
+      this._data.label ? this._data.label : this._data.country
+    }</h2>
     <div class="content-main-box">
       <div class="main-degree-box">
         <span class="main-degree">${this._data.temperature}&#176;</span>

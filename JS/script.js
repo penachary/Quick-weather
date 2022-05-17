@@ -74,14 +74,15 @@ const showWeather = async function () {
     const weeklyData = module.stateWeekly;
     const hourlyData = module.stateHourly;
 
-    // current Date and country container
-    const markupCurrentDate = `
-    <span>${dailyData.country}, ${dailyData.city} </span>
-    `;
-    currentLocationContainer.insertAdjacentHTML(
-      "afterbegin",
-      markupCurrentDate
-    );
+    // current country container
+    const renderNavLocal = function () {
+      currentLocationContainer.innerHTML = "";
+      const markup = `
+      <span>${dailyData.country}</span>
+      `;
+      currentLocationContainer.insertAdjacentHTML("afterbegin", markup);
+    };
+    renderNavLocal();
     // Today firts container
     todayFirstBoxView.render(dailyData);
 
@@ -121,15 +122,16 @@ const showWeather = async function () {
 showWeather();
 
 //After Search
-dropdownBox.addEventListener("click", function(e){
-  const clicked = e.target
-  console.log(clicked);
-  if(!clicked) return;
+dropdownBox.addEventListener("click", function (e) {
+  const clicked = e.target;
+  if (!clicked) return;
 
   module.stateDaily.lat = clicked.getAttribute("lat");
   module.stateDaily.lng = clicked.getAttribute("lng");
-
-  showWeather()
-})
+  module.stateDaily.label = clicked.innerHTML;
+  dropdownBox.classList.remove("active-dropdown");
+  search.value = "";
+  showWeather();
+});
 
 //
