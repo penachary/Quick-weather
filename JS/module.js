@@ -89,19 +89,22 @@ const getCityCord = async function (city) {
   }
 };
 
+const clearStateSearch = function(){
+  stateSearch.lat = [];
+  stateSearch.lng = [];
+  stateSearch.country = [];
+  stateSearch.cityName = [];
+}
+
 const searchFunction = function (e) {
   const text = e.target.value.toLowerCase();
+  dropdownView.clear();
   if (text.length > 2) {
     const getCord = async function () {
       try {
         // empty stateSearch object
-        stateSearch.lat = [];
-        stateSearch.lng = [];
-        stateSearch.country = [];
-        stateSearch.cityName = [];
-
         const { data } = await getCityCord(text);
-        console.log(data);
+        clearStateSearch();
         data.map((el) => {
           stateSearch.lat.push(el.latitude);
           stateSearch.lng.push(el.longitude);
@@ -117,7 +120,7 @@ const searchFunction = function (e) {
     getCord();
   }
 };
-search.addEventListener("keyup", searchFunction);
+search.addEventListener("input", searchFunction);
 
 // funtion for spliting array into smaller pieces
 Object.defineProperty(Array.prototype, "chunk", {
@@ -135,10 +138,10 @@ const getPosition = function () {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
-const pos = await getPosition();
-const { latitude: lat, longitude: lng } = pos.coords;
-stateDaily.lat = lat;
-stateDaily.lng = lng;
+      const pos = await getPosition();
+      const { latitude: lat, longitude: lng } = pos.coords;
+      stateDaily.lat = lat;
+      stateDaily.lng = lng;
 // Reverse geocoding function that returns data object
 const geocodingAPI = async function (lat, lng) {
   try {
@@ -162,11 +165,10 @@ const getJSON = function (url, errorMsg = "Something went wrong!!!") {
 export const wheatherForecast = async function () {
   try {
     const dataIP = await geocodingAPI(stateDaily.lat, stateDaily.lng);
-    console.log(dataIP);
     // daily data
     stateDaily.country = dataIP.countryName;
     stateDaily.city = dataIP.city;
-    stateDaily.localTime = +dataIP.timeZone.localTime.slice(11, 13);
+    stateDaily.localTime = +dataIP.timeZone.localTime.slice(11, 13) === 0 ? 24 : +dataIP.timeZone.localTime.slice(11, 13);
     stateDaily.timezone = dataIP.timeZone.ianaTimeId;
     stateDaily.continent = dataIP.timeZone.ianaTimeId.split("/")[0];
     // weekly data
@@ -212,8 +214,6 @@ export const wheatherForecast = async function () {
       data[1].hourly.windgusts_10m[stateDaily.localTime - 1];
     stateDaily.windSpeed =
       data[1].hourly.windspeed_10m[stateDaily.localTime - 1];
-
-    console.log(stateDaily);
 
     // weekly data
     stateWeekly.date = data[0].daily.time.map(
@@ -278,16 +278,3 @@ export const wheatherForecast = async function () {
     console.log(err);
   }
 };
-// export const geocodingAPI = async function () {
-//   try {
-//     const res = await fetch(
-//         GEOCODE_API_URL("istanbul")
-//     );
-//     if (!res.ok) throw new Error("problem");
-//     const data = await res.json();
-//     console.log(data);
-
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };

@@ -19,6 +19,7 @@ const hourlyContainer = document.querySelector(".hourly-container");
 const allContentContainers = document.querySelectorAll(".content-container");
 const search = document.querySelector(".search-input");
 const btnSearch = document.querySelector(".btn-search");
+const dropdownBox = document.querySelector(".dropdown-menu");
 
 //Degree buttons change effect
 btnDegrees.forEach((btn) =>
@@ -118,5 +119,17 @@ const showWeather = async function () {
   }
 };
 showWeather();
+
+//After Search
+dropdownBox.addEventListener("click", function(e){
+  const clicked = e.target
+  console.log(clicked);
+  if(!clicked) return;
+
+  module.stateDaily.lat = clicked.getAttribute("lat");
+  module.stateDaily.lng = clicked.getAttribute("lng");
+
+  showWeather()
+})
 
 //

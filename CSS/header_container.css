@@ -37,13 +37,18 @@
 }
 .search-input {
   text-align: center;
+  z-index: 15;
 }
 .dropdown-menu {
-  display: block;
+  font-size: 0.8rem;
   width: 21%;
   top: 50%;
   left: 50%;
-  transform: translate(-48%, 17%);
+  z-index: 14;
+  transform: translate(-47.7%, 5.3%)
+}
+.active-dropdown{
+  display: block;
 }
 .btn-search {
   margin-left: 0.5rem;

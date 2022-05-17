@@ -6,10 +6,12 @@ class DropdownView {
     this._data = data;
     const markup = this._generateMarkup();
     this.clear();
+    this._parentElement.classList.add("active-dropdown");
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
   clear() {
+   if (this._parentElement.classList.contains("active-dropdown")) this._parentElement.classList.remove("active-dropdown");
     this._parentElement.innerHTML = "";
   }
 
@@ -22,7 +24,7 @@ class DropdownView {
   }
   _markupMakerHourly = function (num) {
     return `
-        <li><a class="dropdown-item" href="#">${this._data.country[num]} ${this._data.cityName[num]}</a></li>
+        <li><a class="dropdown-item" lat = "${this._data.lat[num]}" lng = "${this._data.lng[num]}">${this._data.country[num]} ${this._data.cityName[num]}</a></li>
     `;
   };
 }
