@@ -112,7 +112,7 @@ const searchFunction = function (e) {
         console.log(err);
       }
     };
-    getCord();
+    setTimeout(getCord, 400);
   }
 };
 search.addEventListener("input", searchFunction);
